@@ -2,99 +2,77 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulador Drag Race</title>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --backgroundImageURL: url('https://i.ibb.co/67shWpd9/Picsart-25-07-13-20-44-37-746.jpg');
-    }
-
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Russo One', sans-serif;
-      background: var(--backgroundImageURL) no-repeat center center fixed;
+      background-image: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png');
       background-size: cover;
-      overflow: hidden;
-      height: 100vh;
+      background-position: center;
+      font-family: 'Verdana', sans-serif;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end; /* botón abajo */
-      align-items: center;
+      justify-content: center;
       position: relative;
+      overflow: hidden;
     }
 
-    .start-btn {
-      margin-bottom: 40px; /* espacio desde abajo */
-      padding: 1.5rem 3.5rem;
-      font-size: 2rem;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px #ff69b4;
+    }
+
+    .start-button {
+      padding: 15px 30px;
+      font-size: 20px;
+      background: linear-gradient(to right, hotpink, violet);
       border: none;
-      border-radius: 50px;
-      background: linear-gradient(45deg, #ff66cc, #ff1493, #b30086);
+      border-radius: 30px;
       color: white;
       cursor: pointer;
-      box-shadow: 0 0 20px #ff33cc, 0 0 40px #ff99ff;
-      transition: all 0.3s ease;
-      z-index: 2;
+      box-shadow: 0 0 20px hotpink;
+      transition: transform 0.3s ease;
+      margin-top: 30px;
     }
 
-    .start-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #ff66ff, 0 0 80px #ffccff;
+    .start-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px violet;
     }
 
-    .sparkle {
+    .quote {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: white;
-      border-radius: 50%;
-      animation: sparkle 2s infinite ease-in-out;
-      opacity: 0.7;
+      font-size: 14px;
+      color: #ffd1ff;
+      font-style: italic;
+      text-shadow: 1px 1px 4px black;
     }
 
-    @keyframes sparkle {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.8;
-      }
-      50% {
-        transform: translateY(-20px) scale(1.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.8;
-      }
-    }
+    .top-left { top: 20px; left: 20px; }
+    .top-right { top: 20px; right: 20px; }
+    .bottom-left { bottom: 20px; left: 20px; }
+    .bottom-right { bottom: 20px; right: 20px; }
   </style>
 </head>
 <body>
 
-  <!-- Botón abajo -->
-  <button class="start-btn" onclick="startSimulation()">¡Comenzar la Simulación!</button>
+  <h1>She done already done had herses!</h1>
 
-  <!-- Brillos -->
-  <script>
-    function startSimulation() {
-      window.location.href = "select-format.html";
-    }
+  <a href="select-queens.html">
+    <button class="start-button">Iniciar Temporada</button>
+  </a>
 
-    for (let i = 0; i < 50; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.left = Math.random() * 100 + 'vw';
-      sparkle.style.top = Math.random() * 100 + 'vh';
-      sparkle.style.animationDuration = (1 + Math.random() * 2) + 's';
-      document.body.appendChild(sparkle);
-    }
-  </script>
-<a href="select-queens.html" style="text-decoration: none;">
-  <button style="padding: 10px 20px; font-size: 18px; border-radius: 12px; background: hotpink; color: white; border: none; cursor: pointer;">
-    Iniciar Temporada
-  </button>
-</a>
-  
+  <!-- Frases icónicas -->
+  <div class="quote top-left">"I feel very attacked!" – Laganja</div>
+  <div class="quote top-right">"Facts are facts, America." – Monique</div>
+  <div class="quote bottom-left">"This is not RuPaul's Best Friend Race!" – Lashauwn Beyond</div>
+  <div class="quote bottom-right">"Choices." – Tatiana</div>
+
 </body>
 </html>
