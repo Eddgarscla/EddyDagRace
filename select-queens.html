@@ -1,136 +1,209 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selecciona Reinas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selecciona tus Reinas</title>
   <style>
     body {
-      background-color: #0d0d0d;
+      background: black;
       color: white;
       font-family: 'Arial', sans-serif;
-      padding: 2rem;
+      text-align: center;
+      padding: 20px;
     }
+
     h1 {
-      text-align: center;
-      margin-bottom: 1rem;
+      font-size: 2em;
+      color: #ff69b4;
+      margin-bottom: 20px;
     }
-    #queenSearch {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      border-radius: 5px;
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      font-size: 1em;
+      border-radius: 8px;
       border: none;
+      outline: none;
     }
-    .queens {
+
+    .search-results {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
       justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      gap: 10px;
     }
+
     .queen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
       cursor: pointer;
-      text-align: center;
+      transition: transform 0.2s ease;
     }
+
     .queen img {
       width: 100px;
+      height: auto;
       border-radius: 10px;
       border: 2px solid transparent;
-      transition: border-color 0.3s;
     }
-    .queen.selected img {
-      border-color: hotpink;
+
+    .queen:hover img {
+      transform: scale(1.05);
+      border-color: #ff69b4;
     }
-    .continue {
-      display: block;
-      margin: 2rem auto;
-      padding: 1rem 2rem;
-      background: linear-gradient(to right, #ff69b4, #8a2be2);
+
+    .selected-queens {
+      margin-top: 30px;
+    }
+
+    .selected-queen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .selected-queen img {
+      width: 80px;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid #ff69b4;
+    }
+
+    .remove-btn {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    #continue-btn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #ff69b4;
       color: white;
       border: none;
       border-radius: 10px;
-      font-size: 1.2rem;
       cursor: pointer;
-      transition: transform 0.2s;
     }
-    .continue:hover {
-      transform: scale(1.05);
+
+    #continue-btn:hover {
+      background-color: #ff1493;
     }
   </style>
 </head>
 <body>
-  <h1>Selecciona tus reinas favoritas</h1>
-  <input type="text" id="queenSearch" onkeyup="filterQueens()" placeholder="Buscar reina..." />
-  <div class="queens" id="queenList">
-    <div class="queen" data-name="Bebe Zahara Benet" onclick="toggleQueen(this, 'Bebe Zahara Benet')">
-      <img src="https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" alt="Bebe Zahara Benet">
-      <p>Bebe Zahara Benet</p>
-    </div>
-    <div class="queen" data-name="Nina Flowers" onclick="toggleQueen(this, 'Nina Flowers')">
-      <img src="https://i.ibb.co/M5110YXY/Picsart-25-07-13-21-58-21-856.jpg" alt="Nina Flowers">
-      <p>Nina Flowers</p>
-    </div>
-    <div class="queen" data-name="Rebecca Glasscock" onclick="toggleQueen(this, 'Rebecca Glasscock')">
-      <img src="https://i.ibb.co/ZRVKcWHd/Picsart-25-07-13-21-59-34-408.jpg" alt="Rebecca Glasscock">
-      <p>Rebecca Glasscock</p>
-    </div>
-    <div class="queen" data-name="Shannel" onclick="toggleQueen(this, 'Shannel')">
-      <img src="https://i.ibb.co/tw44K2Vz/MV5-BNz-Rk-Zjk3-OTct-ZTM3-ZS00-OTFk-LTlj-ZDYt-Yz-Zm-Mj-Ez-NDVi-ODk0-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" alt="Shannel">
-      <p>Shannel</p>
-    </div>
-    <div class="queen" data-name="Jade Sotomayor" onclick="toggleQueen(this, 'Jade Sotomayor')">
-      <img src="https://i.ibb.co/YT0J15Kt/Picsart-25-07-13-22-05-42-149.jpg" alt="Jade Sotomayor">
-      <p>Jade Sotomayor</p>
-    </div>
-    <div class="queen" data-name="Ongina" onclick="toggleQueen(this, 'Ongina')">
-      <img src="https://i.ibb.co/rKbx2XH0/Picsart-25-07-13-22-06-11-695.jpg" alt="Ongina">
-      <p>Ongina</p>
-    </div>
-    <div class="queen" data-name="Akashia" onclick="toggleQueen(this, 'Akashia')">
-      <img src="https://i.ibb.co/Q7N93Pzn/Picsart-25-07-13-22-06-33-456.jpg" alt="Akashia">
-      <p>Akashia</p>
-    </div>
-    <div class="queen" data-name="Tammy Brown" onclick="toggleQueen(this, 'Tammy Brown')">
-      <img src="https://i.ibb.co/FLgXxhZY/Picsart-25-07-13-22-06-56-137.jpg" alt="Tammy Brown">
-      <p>Tammy Brown</p>
-    </div>
-    <div class="queen" data-name="Victoria "Porkchop" Parker" onclick="toggleQueen(this, 'Victoria "Porkchop" Parker')">
-      <img src="https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" alt="Victoria Porkchop Parker">
-      <p>Victoria Porkchop Parker</p>
-    </div>
-  </div>
-  <button class="continue" onclick="goToNext()">Continuar a formatos</button>  <script>
-    function filterQueens() {
-      const input = document.getElementById('queenSearch').value.toLowerCase();
-      const queens = document.querySelectorAll('.queen');
+  <h1>Busca y selecciona tus reinas</h1>
+  <input type="text" id="search" placeholder="Escribe el nombre de la reina...">
+  <div class="search-results" id="results"></div>
+  <div class="selected-queens" id="selectedList"></div>
+  <button id="continue-btn">Continuar</button>
+
+  <script>
+    const queens = [
+      { name: "Bebe Zahara Benet", img: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
+      { name: "Nina Flower", img: "https://i.ibb.co/M5110YXY/Picsart-25-07-13-21-58-21-856.jpg" },
+      { name: "Rebecca Glasscock", img: "https://i.ibb.co/ZRVKcWHd/Picsart-25-07-13-21-59-34-408.jpg" },
+      { name: "Shannel", img: "https://i.ibb.co/tw44K2Vz/MV5-BNz-Rk-Zjk3-OTct-ZTM3-ZS00-OTFk-LTlj-ZDYt-Yz-Zm-Mj-Ez-NDVi-ODk0-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" },
+      { name: "Jade Sotomayor", img: "https://i.ibb.co/YT0J15Kt/Picsart-25-07-13-22-05-42-149.jpg" },
+      { name: "Ongina", img: "https://i.ibb.co/rKbx2XH0/Picsart-25-07-13-22-06-11-695.jpg" },
+      { name: "Akashia", img: "https://i.ibb.co/Q7N93Pzn/Picsart-25-07-13-22-06-33-456.jpg" },
+      { name: "Tammy Brown", img: "https://i.ibb.co/FLgXxhZY/Picsart-25-07-13-22-06-56-137.jpg" },
+      { name: "Victoria Porkchop Parker", img: "https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" }
+    ];
+
+    const searchInput = document.getElementById("search");
+    const resultsDiv = document.getElementById("results");
+    const selectedList = document.getElementById("selectedList");
+    const continueBtn = document.getElementById("continue-btn");
+
+    const selectedQueens = [];
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      resultsDiv.innerHTML = "";
+
+      if (query === "") return;
+
       queens.forEach(queen => {
-        const name = queen.getAttribute('data-name').toLowerCase();
-        queen.style.display = name.includes(input) ? 'block' : 'none';
+        if (queen.name.toLowerCase().includes(query)) {
+          const queenDiv = document.createElement("div");
+          queenDiv.className = "queen";
+
+          const img = document.createElement("img");
+          img.src = queen.img;
+          img.alt = queen.name;
+
+          const name = document.createElement("div");
+          name.textContent = queen.name;
+
+          queenDiv.appendChild(img);
+          queenDiv.appendChild(name);
+
+          queenDiv.addEventListener("click", () => {
+            if (!selectedQueens.some(q => q.name === queen.name)) {
+              selectedQueens.push(queen);
+              updateSelectedList();
+            }
+            searchInput.value = "";
+            resultsDiv.innerHTML = "";
+          });
+
+          resultsDiv.appendChild(queenDiv);
+        }
+      });
+    });
+
+    function updateSelectedList() {
+      selectedList.innerHTML = "";
+
+      selectedQueens.forEach((queen, index) => {
+        const container = document.createElement("div");
+        container.className = "selected-queen";
+
+        const img = document.createElement("img");
+        img.src = queen.img;
+        img.alt = queen.name;
+
+        const name = document.createElement("span");
+        name.textContent = queen.name;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.className = "remove-btn";
+        removeBtn.innerHTML = "✖";
+        removeBtn.onclick = () => {
+          selectedQueens.splice(index, 1);
+          updateSelectedList();
+        };
+
+        container.appendChild(img);
+        container.appendChild(name);
+        container.appendChild(removeBtn);
+
+        selectedList.appendChild(container);
       });
     }
 
-    const selected = new Set();
-
-    function toggleQueen(element, name) {
-      if (selected.has(name)) {
-        selected.delete(name);
-        element.classList.remove('selected');
-      } else {
-        selected.add(name);
-        element.classList.add('selected');
-      }
-    }
-
-    function goToNext() {
-      if (selected.size === 0) {
-        alert("Selecciona al menos una reina.");
+    continueBtn.addEventListener("click", () => {
+      if (selectedQueens.length === 0) {
+        alert("Selecciona al menos una reina para continuar.");
         return;
       }
 
-      const selectedQueens = Array.from(selected);
       localStorage.setItem("selectedQueens", JSON.stringify(selectedQueens));
-
       window.location.href = "select-format.html";
-    }
-  </script></body>
+    });
+  </script>
+</body>
 </html>
