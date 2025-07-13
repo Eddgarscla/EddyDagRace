@@ -1,107 +1,174 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Simulador Drag Race - Inicio</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    font-family: 'Russo One', sans-serif;
-    background: radial-gradient(circle at center, #ff00ff, #660066);
-    color: white;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-  }
-  .flags {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    z-index: 10;
-  }
-  .flags img {
-    width: 60px;
-    height: 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px #ff66cc;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  .flags img:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 15px #ff33cc;
-  }
-  h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin: 40px 0 20px 0;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff33ff, 0 0 30px #ff66ff;
-    z-index: 10;
-  }
-  .start-btn {
-    background: linear-gradient(45deg, #ff66cc, #ff3399);
-    border: none;
-    padding: 1.2rem 3rem;
-    font-size: 1.8rem;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ff33cc;
-    transition: all 0.3s ease;
-    margin-bottom: 30px;
-    z-index: 10;
-  }
-  .start-btn:hover {
-    box-shadow: 0 0 30px #ff66ff, 0 0 50px #ff99ff;
-    transform: scale(1.1);
-  }
-  /* Frases icónicas flotantes */
-  .quote {
-    position: absolute;
-    font-style: italic;
-    font-size: 1rem;
-    opacity: 0.6;
-    white-space: nowrap;
-    user-select: none;
-    animation: floatAnimation 15s linear infinite;
-    pointer-events: none;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulador Drag Race - Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
+  <style>
+    /* Fondo glam morado-azul con brillo */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #3a0ca3, #4361ee, #000c66);
+      font-family: 'Russo One', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 0 20px;
+      text-align: center;
+    }
 
-  @keyframes floatAnimation {
-    0% {
-      transform: translateY(0) translateX(0);
-      opacity: 0.6;
+    /* Glow animado de fondo */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,105,180,0.4), transparent 70%);
+      animation: pulseGlow 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
     }
-    50% {
-      opacity: 1;
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.1); opacity: 0.7; }
     }
-    100% {
-      transform: translateY(-30px) translateX(30px);
-      opacity: 0.6;
+
+    /* Frase principal */
+    h1 {
+      font-size: 4.5rem;
+      margin: 0 60px;
+      text-shadow:
+        0 0 5px #ff66cc,
+        0 0 10px #ff33cc,
+        0 0 20px #ff00ff,
+        0 0 30px #cc00cc;
+      z-index: 10;
+      line-height: 1.1;
+      user-select: none;
     }
-  }
-</style>
+
+    /* Contenedor de banderas a los lados */
+    .flags-container {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 10;
+      user-select: none;
+    }
+    .flags-left {
+      left: 10px;
+    }
+    .flags-right {
+      right: 10px;
+    }
+    .flags-container img {
+      width: 100px;
+      border-radius: 12px;
+      box-shadow:
+        0 0 8px #ff33cc,
+        0 0 15px #ff66ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .flags-container img:hover {
+      transform: scale(1.15);
+      box-shadow:
+        0 0 20px #ff99ff,
+        0 0 30px #ffccff;
+    }
+
+    /* Botón comenzar */
+    .start-btn {
+      margin-top: 40px;
+      background: linear-gradient(45deg, #ff66cc, #ff3399);
+      border: none;
+      padding: 1.2rem 4rem;
+      font-size: 2rem;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      box-shadow:
+        0 0 15px #ff33cc,
+        0 0 30px #ff99ff;
+      transition: all 0.3s ease;
+      user-select: none;
+      z-index: 10;
+    }
+    .start-btn:hover {
+      box-shadow:
+        0 0 30px #ff66ff,
+        0 0 60px #ffccff;
+      transform: scale(1.15);
+    }
+
+    /* Frases icónicas flotantes */
+    .quote {
+      position: fixed;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #ff99ff;
+      text-shadow:
+        0 0 5px #ff99ff,
+        0 0 10px #ff66cc;
+      opacity: 0.7;
+      white-space: nowrap;
+      pointer-events: none;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      user-select: none;
+    }
+    @keyframes float1 {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7;}
+      50% { transform: translateY(-20px) translateX(10px) rotate(5deg); opacity: 1;}
+      100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7;}
+    }
+    @keyframes float2 {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.6;}
+      50% { transform: translateY(-15px) translateX(-15px) rotate(-7deg); opacity: 0.9;}
+      100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.6;}
+    }
+    @keyframes float3 {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.5;}
+      50% { transform: translateY(-10px) translateX(20px) rotate(3deg); opacity: 0.8;}
+      100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.5;}
+    }
+
+  </style>
 </head>
 <body>
-  <div class="flags">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_the_United_States.svg/320px-Flag_of_the_United_States.svg.png" alt="USA Flag" title="Drag Race US" />
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Spain.svg/320px-Flag_of_Spain.svg.png" alt="Spain Flag" title="Drag Race España" />
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_the_United_Kingdom.svg/320px-Flag_of_the_United_Kingdom.svg.png" alt="UK Flag" title="Drag Race UK" />
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Flag_of_the_European_Union.svg/320px-Flag_of_the_European_Union.svg.png" alt="Vs The World" title="Drag Race Vs The World" />
+  <!-- Banderas a los lados -->
+  <div class="flags-container flags-left">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_the_United_States.svg/320px-Flag_of_the_United_States.svg.png" alt="Drag Race US" title="Drag Race US" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Spain.svg/320px-Flag_of_Spain.svg.png" alt="Drag Race España" title="Drag Race España" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_the_United_Kingdom.svg/320px-Flag_of_the_United_Kingdom.svg.png" alt="Drag Race UK" title="Drag Race UK" />
   </div>
 
   <h1>She done already done had herses!</h1>
 
+  <div class="flags-container flags-right">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Flag_of_the_European_Union.svg/320px-Flag_of_the_European_Union.svg.png" alt="Drag Race Vs The World" title="Drag Race Vs The World" />
+  </div>
+
   <button class="start-btn" onclick="startSimulation()">¡Comenzar Simulación!</button>
 
   <script>
+    function startSimulation() {
+      window.location.href = "select-format.html";
+    }
+
     const quotes = [
       "Not today, Satan!",
       "Bring back my girls!",
@@ -122,22 +189,23 @@
       "I feel very attacked."
     ];
 
-    function startSimulation() {
-      window.location.href = "select-format.html";
-    }
-
-    // Crea las frases flotantes al azar en la pantalla
+    // Crear frases flotantes glam
     function createFloatingQuotes() {
       const body = document.body;
-      quotes.forEach(text => {
+      quotes.forEach((text, i) => {
         const span = document.createElement('span');
         span.className = 'quote';
+
+        // Añade animación diferente para más vida
+        const anims = ['float1', 'float2', 'float3'];
+        span.style.animation = ${anims[i % anims.length]} ${10 + i * 2}s ease-in-out infinite;
+
         span.textContent = text;
-        // Posición aleatoria
-        span.style.top = Math.random() * window.innerHeight + 'px';
-        span.style.left = Math.random() * window.innerWidth + 'px';
-        // Duración aleatoria para la animación (entre 12 y 20 segundos)
-        span.style.animationDuration = (12 + Math.random() * 8) + 's';
+
+        // Posición random pero distribuida para que no se amontonen
+        span.style.top = Math.random() * (window.innerHeight - 40) + 'px';
+        span.style.left = Math.random() * (window.innerWidth - 150) + 'px';
+
         body.appendChild(span);
       });
     }
