@@ -8,6 +8,7 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
       height: 100vh;
       font-family: 'Russo One', sans-serif;
       background: linear-gradient(135deg, #3a0ca3, #7209b7, #4361ee);
@@ -20,7 +21,6 @@
       overflow: hidden;
     }
 
-    /* Frase central icónica */
     h1 {
       font-size: 3.5rem;
       text-align: center;
@@ -31,12 +31,11 @@
       z-index: 2;
     }
 
-    /* Banderas de carrera a los lados (como fondo decorativo) */
     .racing-flag {
       position: absolute;
       top: 50%;
-      width: 150px;
-      opacity: 0.3;
+      width: 180px;
+      opacity: 0.4;
       transform: translateY(-50%);
       z-index: 1;
     }
@@ -51,7 +50,6 @@
       transform: translateY(-50%) rotate(15deg);
     }
 
-    /* Botón llamativo */
     .start-btn {
       margin-top: 40px;
       background: linear-gradient(45deg, #ff66cc, #ff1493);
@@ -71,7 +69,6 @@
       box-shadow: 0 0 30px #ff66ff, 0 0 60px #ffccff;
     }
 
-    /* Frases icónicas flotantes */
     .quote {
       position: absolute;
       font-style: italic;
@@ -93,17 +90,17 @@
 </head>
 <body>
 
-  <!-- Banderas tipo drag race decorativas -->
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Chequered-flag.svg/2048px-Chequered-flag.svg.png" class="racing-flag left" alt="flag" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Chequered-flag.svg/2048px-Chequered-flag.svg.png" class="racing-flag right" alt="flag" />
+  <!-- Banderas estilo carrera (funcionan bien) -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Chequered-flag.svg" alt="Bandera izquierda" class="racing-flag left" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Chequered-flag.svg" alt="Bandera derecha" class="racing-flag right" />
 
-  <!-- Frase icónica -->
+  <!-- Frase principal -->
   <h1>She done already done had herses!</h1>
 
   <!-- Botón -->
   <button class="start-btn" onclick="startSimulation()">¡Comenzar la Simulación!</button>
 
-  <!-- Frases flotantes -->
+  <!-- Frases icónicas -->
   <script>
     const quotes = [
       "Not today, Satan!",
@@ -135,7 +132,7 @@
     });
 
     function startSimulation() {
-      window.location.href = "select-format.html";
+      window.location.href = "select-format.html"; // Cambia si tienes otra página de destino
     }
   </script>
 
