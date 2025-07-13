@@ -2,28 +2,84 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Simulador Drag Race</title>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drag Race Simulador</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      font-family: 'Russo One', sans-serif;
-      background: linear-gradient(135deg, #3a0ca3, #7209b7, #4361ee);
-      color: white;
+      font-family: 'Verdana', sans-serif;
+      background: radial-gradient(circle at center, #1a1a1a, #000000);
+      color: #ffffff;
+      text-align: center;
+      overflow-x: hidden;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff69b4;
+      margin-top: 20vh;
+      text-shadow: 2px 2px 10px #f0f;
+    }
+
+    .flags {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      overflow: hidden;
+      justify-content: space-between;
+      padding: 2em;
+    }
+
+    .flags img {
+      width: 80px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fff);
+    }
+
+    .quotes {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1em;
+      font-size: 0.9em;
+      color: #ccc;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    .quote {
+      width: 40%;
+    }
+
+    footer {
+      margin-top: 5em;
+      font-size: 0.8em;
+      color: #999;
     }
   </style>
 </head>
 <body>
+  <div class="flags">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Drag_Race_flag_left.png" alt="Drag Race Flag Left" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Drag_Race_flag_left.png" style="transform: scaleX(-1);" alt="Drag Race Flag Right" />
+  </div>
 
-  <!-- Aquí vamos a ir agregando todo lo demás -->
+  <h1>She done already done had herses!</h1>
 
+  <div class="quotes">
+    <div class="quote">“Miss Vanjie... Miss Vanjie...”</div>
+    <div class="quote">“If you stay ready, you ain’t got to get ready.”</div>
+    <div class="quote">“Back rolls?”</div>
+    <div class="quote">“This is not RuPaul’s Best Friend Race!”</div>
+    <div class="quote">“Silence! Bring back my girls.”</div>
+    <div class="quote">“I feel very attacked!”</div>
+  </div>
+
+  <footer>
+    © 2025 Drag Race Simulador · Powered by fans, not affiliated with World of Wonder.
+  </footer>
 </body>
 </html>
