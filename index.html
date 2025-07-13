@@ -11,17 +11,39 @@
     font-family: 'Russo One', sans-serif;
     background: radial-gradient(circle at center, #ff00ff, #660066);
     color: white;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  .flags {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    z-index: 10;
+  }
+  .flags img {
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #ff66cc;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .flags img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #ff33cc;
   }
   h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    text-align: center;
+    margin: 40px 0 20px 0;
     text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff33ff, 0 0 30px #ff66ff;
-    margin-bottom: 20px;
+    z-index: 10;
   }
   .start-btn {
     background: linear-gradient(45deg, #ff66cc, #ff3399);
@@ -33,55 +55,94 @@
     cursor: pointer;
     box-shadow: 0 0 15px #ff33cc;
     transition: all 0.3s ease;
+    margin-bottom: 30px;
+    z-index: 10;
   }
   .start-btn:hover {
     box-shadow: 0 0 30px #ff66ff, 0 0 50px #ff99ff;
     transform: scale(1.1);
   }
-  .menu {
-    margin-top: 40px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+  /* Frases icónicas flotantes */
+  .quote {
+    position: absolute;
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.6;
+    white-space: nowrap;
+    user-select: none;
+    animation: floatAnimation 15s linear infinite;
+    pointer-events: none;
   }
-  .menu button {
-    background: linear-gradient(135deg, #660066, #cc33cc);
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    border-radius: 40px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 10px #cc33cc;
-    transition: all 0.3s ease;
-    min-width: 140px;
-  }
-  .menu button:hover {
-    background: linear-gradient(135deg, #ff33cc, #ff99ff);
-    box-shadow: 0 0 20px #ff99ff, 0 0 30px #ffccff;
-    transform: scale(1.05);
+
+  @keyframes floatAnimation {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-30px) translateX(30px);
+      opacity: 0.6;
+    }
   }
 </style>
 </head>
 <body>
-  <h1>Simulador Drag Race</h1>
-  <button class="start-btn" onclick="document.getElementById('menu').style.display = 'flex'; this.style.display = 'none';">
-    ¡Comenzar Simulación!
-  </button>
-  <div id="menu" class="menu" style="display:none;">
-    <button onclick="selectFormat('All Stars')">All Stars (US)</button>
-    <button onclick="selectFormat('España')">Drag Race España</button>
-    <button onclick="selectFormat('UK')">Drag Race UK</button>
-    <button onclick="selectFormat('Vs The World')">Vs. The World</button>
-    <button onclick="selectFormat('Personalizado')">Personalizado</button>
+  <div class="flags">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_the_United_States.svg/320px-Flag_of_the_United_States.svg.png" alt="USA Flag" title="Drag Race US" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Spain.svg/320px-Flag_of_Spain.svg.png" alt="Spain Flag" title="Drag Race España" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_the_United_Kingdom.svg/320px-Flag_of_the_United_Kingdom.svg.png" alt="UK Flag" title="Drag Race UK" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Flag_of_the_European_Union.svg/320px-Flag_of_the_European_Union.svg.png" alt="Vs The World" title="Drag Race Vs The World" />
   </div>
 
+  <h1>She done already done had herses!</h1>
+
+  <button class="start-btn" onclick="startSimulation()">¡Comenzar Simulación!</button>
+
   <script>
-    function selectFormat(format) {
-      alert('Elegiste el formato: ' + format + '\\nPróximamente, aquí empezará la simulación.');
-      // Aquí podríamos redirigir o cargar la simulación real
+    const quotes = [
+      "Not today, Satan!",
+      "Bring back my girls!",
+      "Sashay away!",
+      "Shantay, you stay!",
+      "I’m not here to make friends.",
+      "The library is open.",
+      "Category is…",
+      "You better werk!",
+      "No tea, no shade.",
+      "Reading is fundamental.",
+      "Feast your eyes.",
+      "You’re a winner, baby!",
+      "Girl, bye!",
+      "Bring it to the runway.",
+      "Can I get an amen up in here?",
+      "Untucked and unapologetic.",
+      "I feel very attacked."
+    ];
+
+    function startSimulation() {
+      window.location.href = "select-format.html";
     }
+
+    // Crea las frases flotantes al azar en la pantalla
+    function createFloatingQuotes() {
+      const body = document.body;
+      quotes.forEach(text => {
+        const span = document.createElement('span');
+        span.className = 'quote';
+        span.textContent = text;
+        // Posición aleatoria
+        span.style.top = Math.random() * window.innerHeight + 'px';
+        span.style.left = Math.random() * window.innerWidth + 'px';
+        // Duración aleatoria para la animación (entre 12 y 20 segundos)
+        span.style.animationDuration = (12 + Math.random() * 8) + 's';
+        body.appendChild(span);
+      });
+    }
+
+    window.onload = createFloatingQuotes;
   </script>
 </body>
 </html>
