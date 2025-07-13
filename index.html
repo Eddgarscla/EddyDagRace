@@ -4,23 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador Drag Race</title>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --backgroundImageURL: url('https://i.ibb.co/67shWpd9/Picsart-25-07-13-20-44-37-746.jpg');
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: 'Russo One', sans-serif;
-      background: url('https://i.ibb.co/k27z1hbj/file-000000003b50620aa85e1e71dd72efc2.png') no-repeat center center fixed;
+      background: var(--backgroundImageURL) no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; /* botón abajo */
+      align-items: center;
       position: relative;
     }
 
     .start-btn {
+      margin-bottom: 40px; /* espacio desde abajo */
       padding: 1.5rem 3.5rem;
       font-size: 2rem;
       border: none;
@@ -66,22 +72,21 @@
 </head>
 <body>
 
-  <!-- Botón central -->
+  <!-- Botón abajo -->
   <button class="start-btn" onclick="startSimulation()">¡Comenzar la Simulación!</button>
 
-  <!-- Brillos aleatorios -->
+  <!-- Brillos -->
   <script>
     function startSimulation() {
       window.location.href = "select-format.html";
     }
 
-    // Crear brillos animados
     for (let i = 0; i < 50; i++) {
-      const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-      sparkle.style.left = Math.random() * 100 + "vw";
-      sparkle.style.top = Math.random() * 100 + "vh";
-      sparkle.style.animationDuration = (1 + Math.random() * 2) + "s";
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDuration = (1 + Math.random() * 2) + 's';
       document.body.appendChild(sparkle);
     }
   </script>
