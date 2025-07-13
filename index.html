@@ -2,106 +2,86 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador Drag Race</title>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
       font-family: 'Russo One', sans-serif;
-      background: 
-        linear-gradient(135deg, rgba(0,0,0,0.6), rgba(255,0,255,0.4), rgba(0,0,255,0.4)),
-        url('https://img.freepik.com/fotos-premium/ilustracion-3d-fondo-claro-color-pared-ladrillo_334678-390.jpg');
+      background: url('https://i.ibb.co/k27z1hbj/file-000000003b50620aa85e1e71dd72efc2.png') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-blend-mode: overlay;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       position: relative;
     }
 
-    h1 {
-      font-size: 3.5rem;
-      text-align: center;
-      text-shadow:
-        0 0 10px #ff00ff,
-        0 0 20px #ff66cc,
-        0 0 30px #7209b7;
-      z-index: 2;
-    }
-
     .start-btn {
-      margin-top: 40px;
-      background: linear-gradient(45deg, #ff66cc, #ff1493);
+      padding: 1.5rem 3.5rem;
+      font-size: 2rem;
       border: none;
-      padding: 1.2rem 3rem;
-      font-size: 1.5rem;
       border-radius: 50px;
+      background: linear-gradient(45deg, #ff66cc, #ff1493, #b30086);
       color: white;
       cursor: pointer;
-      box-shadow: 0 0 15px #ff33cc, 0 0 30px #ff99ff;
+      box-shadow: 0 0 20px #ff33cc, 0 0 40px #ff99ff;
       transition: all 0.3s ease;
       z-index: 2;
     }
 
     .start-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 30px #ff66ff, 0 0 60px #ffccff;
+      box-shadow: 0 0 40px #ff66ff, 0 0 80px #ffccff;
     }
 
     .sparkle {
       position: absolute;
-      width: 3px;
-      height: 3px;
+      width: 4px;
+      height: 4px;
       background: white;
       border-radius: 50%;
-      animation: sparkle 10s linear infinite;
-      opacity: 0.8;
-      z-index: 1;
+      animation: sparkle 2s infinite ease-in-out;
+      opacity: 0.7;
     }
 
     @keyframes sparkle {
       0% {
         transform: translateY(0) scale(1);
-        opacity: 0.5;
+        opacity: 0.8;
       }
       50% {
-        transform: translateY(-100vh) scale(1.5);
+        transform: translateY(-20px) scale(1.5);
         opacity: 1;
       }
       100% {
         transform: translateY(0) scale(1);
-        opacity: 0.5;
+        opacity: 0.8;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Frase icónica -->
-  <h1>She done already done had herses!</h1>
-
-  <!-- Botón -->
+  <!-- Botón central -->
   <button class="start-btn" onclick="startSimulation()">¡Comenzar la Simulación!</button>
 
-  <!-- Brillitos -->
+  <!-- Brillos aleatorios -->
   <script>
     function startSimulation() {
       window.location.href = "select-format.html";
     }
 
-    for (let i = 0; i < 100; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
+    // Crear brillos animados
+    for (let i = 0; i < 50; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
       sparkle.style.left = Math.random() * 100 + "vw";
       sparkle.style.top = Math.random() * 100 + "vh";
-      sparkle.style.animationDuration = (5 + Math.random() * 10) + "s";
+      sparkle.style.animationDuration = (1 + Math.random() * 2) + "s";
       document.body.appendChild(sparkle);
     }
   </script>
