@@ -1,16 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simulador Drag Race</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simulador Drag Race - Inicio</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Russo One', sans-serif;
+    background: radial-gradient(circle at center, #ff00ff, #660066);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 3.5rem;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff33ff, 0 0 30px #ff66ff;
+    margin-bottom: 20px;
+  }
+  .start-btn {
+    background: linear-gradient(45deg, #ff66cc, #ff3399);
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.8rem;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff33cc;
+    transition: all 0.3s ease;
+  }
+  .start-btn:hover {
+    box-shadow: 0 0 30px #ff66ff, 0 0 50px #ff99ff;
+    transform: scale(1.1);
+  }
+  .menu {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .menu button {
+    background: linear-gradient(135deg, #660066, #cc33cc);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 10px #cc33cc;
+    transition: all 0.3s ease;
+    min-width: 140px;
+  }
+  .menu button:hover {
+    background: linear-gradient(135deg, #ff33cc, #ff99ff);
+    box-shadow: 0 0 20px #ff99ff, 0 0 30px #ffccff;
+    transform: scale(1.05);
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="animated-text">She done already done had herses!</h1>
-    <button onclick="startSimulation()">¡Comenzar Simulación!</button>
+  <h1>Simulador Drag Race</h1>
+  <button class="start-btn" onclick="document.getElementById('menu').style.display = 'flex'; this.style.display = 'none';">
+    ¡Comenzar Simulación!
+  </button>
+  <div id="menu" class="menu" style="display:none;">
+    <button onclick="selectFormat('All Stars')">All Stars (US)</button>
+    <button onclick="selectFormat('España')">Drag Race España</button>
+    <button onclick="selectFormat('UK')">Drag Race UK</button>
+    <button onclick="selectFormat('Vs The World')">Vs. The World</button>
+    <button onclick="selectFormat('Personalizado')">Personalizado</button>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    function selectFormat(format) {
+      alert('Elegiste el formato: ' + format + '\\nPróximamente, aquí empezará la simulación.');
+      // Aquí podríamos redirigir o cargar la simulación real
+    }
+  </script>
 </body>
 </html>
