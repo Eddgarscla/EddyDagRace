@@ -111,6 +111,98 @@
     <div class="selected-queens" id="selectedQueens">
       <h2>Reinas seleccionadas</h2>
     </div>
+    <hr style="border-color: hotpink; margin: 1rem 0;">
+
+<!-- Menú Premier -->
+<label for="premiere">Elige tu formato de estreno</label>
+<select id="premiere" name="premiere">
+  <option value="estreno_normal">Estreno normal</option>
+  <option value="estreno_sin_eliminacion">Estreno normal (sin eliminación)</option>
+  <option value="estreno_slayers">Estreno normal (slayers)</option>
+  <option value="estreno_entrada_tardia">Estreno normal (entrada tardía)</option>
+  <option value="doble_estreno">Doble estreno</option>
+  <option value="doble_estreno_sin_eliminacion">Doble estreno (sin eliminación)</option>
+  <option value="doble_estreno_concurso_talentos">Doble estreno (concurso de talentos)</option>
+  <option value="doble_estreno_grupo_chicas">Doble estreno (grupo de chicas)</option>
+  <option value="estreno_porkchop">Estreno de porkchop</option>
+  <option value="rate_a_queen">Rate a queen</option>
+  <option value="estreno_uk3">Estreno UK3</option>
+  <option value="brackets_as10">Brackets (AS10)</option>
+</select>
+
+<!-- Menú Retorno -->
+<label for="return-format">Elige el formato de retorno</label>
+<select id="return-format" name="return-format">
+  <option value="nadie">Nadie</option>
+  <option value="elige_quien_regresa">Elige quien regresa</option>
+  <option value="regresa_al_azar">Regresa alguien al azar</option>
+  <option value="lip_sync_smackdown">Lip sync smackdown</option>
+  <option value="lalaparuza">LaLaPaRUza</option>
+  <option value="jurado_elige">Jurado elige</option>
+  <option value="wild_card_as10">Wild card (AS10)</option>
+</select>
+
+<!-- Menú Temporada -->
+<label for="season-format">Elige el formato de tu temporada</label>
+<select id="season-format" name="season-format">
+  <option value="regular">Regular</option>
+  <option value="tailandia">Tailandia</option>
+  <option value="equipos_as1">Equipos (AS1)</option>
+  <option value="lip_sync_for_your_legacy">Lip-sync for your legacy</option>
+  <option value="lip_sync_assassins">Lip-sync assassins</option>
+  <option value="brackets_as10">Brackets (AS10)</option>
+</select>
+
+<!-- Menú Final -->
+<label for="final-format">Elige el formato de tu final</label>
+<select id="final-format" name="final-format">
+  <option value="top5">Top 5</option>
+  <option value="top4">Top 4</option>
+  <option value="top3">Top 3</option>
+  <option value="top2">Top 2</option>
+  <option value="final_equipos_top4_top2">Final de equipos / Top 4 a Top 2</option>
+  <option value="lip_sync_for_the_crown">Lip-sync for the crown</option>
+  <option value="lip_sync_for_the_finally">Lip-sync for the finally</option>
+  <option value="votacion_jurado">Votación del jurado</option>
+  <option value="lip_sync_tournament_as10">Lip-sync tournament (AS10)</option>
+  <option value="final_aleatorio">Final aleatorio</option>
+</select>
+
+<!-- Opciones -->
+<label>Opciones</label>
+
+<div class="toggle-container">
+  <label for="toggle-doble-shantay">Desactivar Doble Shantay</label>
+  <input type="checkbox" id="toggle-doble-shantay" />
+</div>
+
+<div class="toggle-container">
+  <label for="toggle-doble-sashay">Desactivar Doble Sashay</label>
+  <input type="checkbox" id="toggle-doble-sashay" />
+</div>
+
+<label>Desafío de sincronización de labios</label>
+<select id="lip-sync-challenge" name="lip-sync-challenge">
+  <option value="ninguno">Ninguno</option>
+  <option value="lalaparuza_smackdown">LaLaPaRUza Smackdown</option>
+  <option value="reunion_smackdown">Reunion Smackdown</option>
+</select>
+
+<label>Barra de chocolate twist</label>
+<select id="chocolate-twist" name="chocolate-twist">
+  <option value="aleatorio">Aleatorio</option>
+  <option value="elegible">Elegible</option>
+</select>
+
+<label>Giros</label>
+<div class="toggle-container">
+  <label for="immunity">Inmunidad</label>
+  <input type="checkbox" id="immunity" />
+</div>
+<div class="toggle-container">
+  <label for="golden-beaver">Golden Beaver</label>
+  <input type="checkbox" id="golden-beaver" />
+</div>
     <button class="next-button" onclick="goToFormat()">Star your Engines</button>
   </div>
 
