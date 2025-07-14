@@ -396,7 +396,6 @@ burger.addEventListener('click', () => {
   }
 });
 
-// Presets de temporadas con reinas
 const presets = {
   "US Temporada 1": [
     "Bebe Zahara Benet",
@@ -409,17 +408,14 @@ const presets = {
     "Tammy Brown",
     "Victoria Porkchop Parker"
   ],
-  // Puedes agregar más temporadas aquí siguiendo el mismo formato
 };
 
 function applyPreset(name) {
   const queensToAdd = presets[name];
   if (!queensToAdd) return;
 
-  // Limpiamos selección actual
-  selectedQueens.length = 0;
+  selectedQueens.length = 0; // limpia selección actual
 
-  // Agregamos reinas del preset
   queensToAdd.forEach(presetName => {
     const queen = queens.find(q => q.name === presetName);
     if (queen) {
@@ -428,7 +424,7 @@ function applyPreset(name) {
   });
 
   renderSelectedQueens();
-  presetMenu.style.right = '-220px'; // Ocultamos menú al seleccionar
+  presetMenu.style.right = '-220px'; // oculta menú
   burger.style.transform = 'rotate(0deg)';
 }
   </script>
