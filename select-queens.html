@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Selecciona tus Reinas</title>
+  <title>Selecciona tus Reinas y Configura</title>
   <style>
     body {
       margin: 0;
@@ -16,19 +16,21 @@
     }
 
     .container {
-      max-width: 600px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: 2rem auto 4rem auto;
       padding: 2rem;
       background-color: rgba(0, 0, 0, 0.7);
       border-radius: 1rem;
       box-shadow: 0 0 20px #ff69b4;
+      text-align: left;
     }
 
     h1 {
       margin-bottom: 1rem;
+      text-align: center;
     }
 
-    input[type="text"] {
+    input[type="text"], select {
       width: 100%;
       padding: 0.75rem;
       font-size: 1rem;
@@ -42,6 +44,8 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      max-height: 250px;
+      overflow-y: auto;
     }
 
     .queen-card {
@@ -51,6 +55,11 @@
       padding: 0.5rem;
       border-radius: 0.5rem;
       cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .queen-card:hover {
+      background-color: rgba(255, 105, 180, 0.4);
     }
 
     .queen-card img {
@@ -63,6 +72,8 @@
     .selected-queens {
       margin-top: 2rem;
       text-align: left;
+      max-height: 300px;
+      overflow-y: auto;
     }
 
     .selected-queen {
@@ -89,17 +100,50 @@
       margin-left: auto;
       border-radius: 0.5rem;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: hotpink;
+    }
+
+    select, input[type="checkbox"] {
+      margin-top: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .options-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .option-item {
+      flex: 1 1 45%;
     }
 
     .next-button {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
+      display: block;
+      margin: 2rem auto 0 auto;
+      padding: 1rem 3rem;
+      font-size: 1.5rem;
       background-color: hotpink;
       color: white;
       border: none;
-      border-radius: 0.5rem;
+      border-radius: 0.7rem;
       cursor: pointer;
+      box-shadow: 0 0 15px hotpink;
+      transition: background-color 0.3s;
+    }
+
+    .next-button:hover {
+      background-color: deeppink;
+      box-shadow: 0 0 25px deeppink;
     }
   </style>
 </head>
@@ -108,10 +152,74 @@
     <h1>Busca y selecciona tus reinas</h1>
     <input type="text" id="search" placeholder="Escribe el nombre de una reina..." />
     <div class="search-results" id="searchResults"></div>
+
     <div class="selected-queens" id="selectedQueens">
       <h2>Reinas seleccionadas</h2>
     </div>
-    <button class="next-button" onclick="goToFormat()">Continuar a formatos</button>
+
+    <!-- Menús de configuración -->
+    <label for="premiere">Formato de Premiere</label>
+    <select id="premiere">
+      <option value="normal">Premiere Normal</option>
+      <option value="sin-eliminacion">Premiere Sin Eliminación</option>
+      <option value="entrada-tardia">Premiere con Entrada Tardía</option>
+      <option value="doble-premiere">Doble Premiere</option>
+      <option value="doble-premiere-sin-eliminacion">Doble Premiere Sin Eliminación</option>
+      <option value="porkchop-premiere">Porkchop Premiere</option>
+      <option value="rate-a-queen-premiere">Rate a Queen Premiere</option>
+      <option value="uk3-premiere">UK3 Premiere</option>
+      <option value="all-stars-10-premiere">All Stars 10 (3 brackets)</option>
+    </select>
+
+    <label for="retorno">Formato de Retorno</label>
+    <select id="retorno">
+      <option value="nadie">Nadie</option>
+      <option value="elige-quien-regresa">Elige Quién Regresa</option>
+      <option value="al-azar">Regresa Al Azar</option>
+      <option value="lip-sync-smackdown">Lip Sync Smackdown</option>
+      <option value="lalaparuza">Lalaparuza</option>
+      <option value="jurado-elige">Jurado Elige</option>
+      <option value="wild-card">Wild Card (All Stars 10)</option>
+    </select>
+
+    <label for="temporada">Formato de Temporada</label>
+    <select id="temporada">
+      <option value="clasico">Clásico</option>
+      <option value="all-stars">All Stars</option>
+      <option value="otros">Otros</option>
+    </select>
+
+    <label for="final">Formato de Final</label>
+    <select id="final">
+      <option value="normal">Final Normal</option>
+      <option value="final-doble">Final Doble</option>
+      <option value="final-3">Final 3</option>
+    </select>
+
+    <div class="options-group">
+      <div class="option-item">
+        <input type="checkbox" id="dobleShantay" />
+        <label for="dobleShantay">Doble Shantay</label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" id="dobleSashay" />
+        <label for="dobleSashay">Doble Sashay</label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" id="lipSyncSmackdown" />
+        <label for="lipSyncSmackdown">Desafíos Lip Sync Smackdown</label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" id="inmunidad" />
+        <label for="inmunidad">Inmunidad</label>
+      </div>
+      <div class="option-item">
+        <input type="checkbox" id="goldenBeaver" />
+        <label for="goldenBeaver">Golden Beaver</label>
+      </div>
+    </div>
+
+    <button class="next-button" onclick="startSeason()">Start Your Engines</button>
   </div>
 
   <script>
@@ -181,14 +289,9 @@
       renderSelectedQueens();
     }
 
-    function goToFormat() {
+    function startSeason() {
       if (selectedQueens.length === 0) {
         alert("Selecciona al menos una reina para continuar.");
         return;
       }
-      localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
-      window.location.href = 'select-format.html'; // Asegúrate de tener esta página creada
-    }
-  </script>
-</body>
-</html>
+      // Guardar todo en localStorage
