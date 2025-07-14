@@ -222,6 +222,53 @@
       <h2>Reinas seleccionadas</h2>
     </div>
 
+    <!-- Contenedor para las opciones de formato -->
+<div id="format-options" style="margin-top: 30px; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto; color: white;">
+
+  <!-- Menú Premiere -->
+  <label for="premiere" style="font-weight: 800; font-size: 1.2rem; text-shadow: 0 0 8px hotpink;">Elige tu formato de estreno</label>
+  <select id="premiere" name="premiere" style="width: 100%; padding: 12px 16px; font-size: 1.1rem; border-radius: 15px; border: none; outline: none; box-shadow: 0 0 15px #ff69b4; background-color: #330033; color: white; cursor: pointer; margin-bottom: 20px;">
+    <option value="estreno_normal">Estreno normal</option>
+    <option value="estreno_sin_eliminacion">Estreno normal (sin eliminación)</option>
+    <option value="doble_estreno">Doble estreno</option>
+    <option value="doble_estreno_sin_eliminacion">Doble estreno (sin eliminación)</option>
+    <option value="estreno_porkchop">Estreno de porkchop</option>
+    <!-- Puedes agregar más opciones aquí -->
+  </select>
+
+  <!-- Menú Retorno -->
+  <label for="return-format" style="font-weight: 800; font-size: 1.2rem; text-shadow: 0 0 8px hotpink;">Elige el formato de retorno</label>
+  <select id="return-format" name="return-format" style="width: 100%; padding: 12px 16px; font-size: 1.1rem; border-radius: 15px; border: none; outline: none; box-shadow: 0 0 15px #ff69b4; background-color: #330033; color: white; cursor: pointer; margin-bottom: 20px;">
+    <option value="nadie">Nadie</option>
+    <option value="elige_quien_regresa">Elige quien regresa</option>
+    <option value="regresa_al_azar">Regresa alguien al azar</option>
+    <option value="lip_sync_smackdown">Lip sync smackdown</option>
+    <!-- Más opciones aquí -->
+  </select>
+
+  <!-- Menú Temporada -->
+  <label for="season-format" style="font-weight: 800; font-size: 1.2rem; text-shadow: 0 0 8px hotpink;">Elige el formato de tu temporada</label>
+  <select id="season-format" name="season-format" style="width: 100%; padding: 12px 16px; font-size: 1.1rem; border-radius: 15px; border: none; outline: none; box-shadow: 0 0 15px #ff69b4; background-color: #330033; color: white; cursor: pointer; margin-bottom: 20px;">
+    <option value="regular">Regular</option>
+    <option value="tailandia">Tailandia</option>
+    <option value="equipos_as1">Equipos (AS1)</option>
+    <option value="lip_sync_for_your_legacy">Lip-sync for your legacy</option>
+    <!-- Más opciones aquí -->
+  </select>
+
+  <!-- Menú Final -->
+  <label for="final-format" style="font-weight: 800; font-size: 1.2rem; text-shadow: 0 0 8px hotpink;">Elige el formato de tu final</label>
+  <select id="final-format" name="final-format" style="width: 100%; padding: 12px 16px; font-size: 1.1rem; border-radius: 15px; border: none; outline: none; box-shadow: 0 0 15px #ff69b4; background-color: #330033; color: white; cursor: pointer; margin-bottom: 20px;">
+    <option value="top5">Top 5</option>
+    <option value="top4">Top 4</option>
+    <option value="top3">Top 3</option>
+    <option value="top2">Top 2</option>
+    <option value="lip_sync_for_the_crown">Lip-sync for the crown</option>
+    <!-- Más opciones aquí -->
+  </select>
+
+</div>
+
 <button id="startSimulationButton" style="margin-top:20px; padding:1rem 2.5rem; font-size:1.2rem; font-weight:900; border-radius:25px; border:none; cursor:pointer; background: linear-gradient(135deg, #ff69b4, #ff1493); color:white; box-shadow: 0 0 25px hotpink; text-transform:uppercase; letter-spacing:2px;">
   Start your engines!
 </button>
