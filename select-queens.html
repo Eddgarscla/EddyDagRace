@@ -243,10 +243,10 @@ select:hover, select:focus {
   <h3>Temporadas predefinidas</h3>
   <ul>
     <li onclick="selectSeason('us_s1')">US Temporada 1</li>
-    <li onclick="selectSeason('uk_s1')">UK Temporada 1</li>
     <!-- Agrega más temporadas aquí -->
   </ul>
 </div>
+  <div id="queen-container" style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; justify-content: center;"></div>
   <div class="container">
   <h1>Selecciona tus Reinas</h1>
   <input type="text" id="search" placeholder="Busca una reina..." />
@@ -356,6 +356,19 @@ select:hover, select:focus {
       { name: "Tammy Brown", image: "https://i.ibb.co/FLgXxhZY/Picsart-25-07-13-22-06-56-137.jpg" },
       { name: "Victoria Porkchop Parker", image: "https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" }
     ];
+    const seasons = {
+  us_s1: [
+    "Bebe Zahara Benet",
+    "Nina Flowers",
+    "Rebecca Glasscock",
+    "Shannel",
+    "Jade Sotomayor",
+    "Ongina",
+    "Akashia",
+    "Tammy Brown",
+    "Victoria Porkchop Parker"
+  ]
+}
 
     const searchInput = document.getElementById('search');
     const searchResults = document.getElementById('searchResults');
@@ -422,13 +435,36 @@ select:hover, select:focus {
     function toggleMenu() {
     const menu = document.getElementById("presetMenu");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
+   function selectSeason(seasonId) {
+  const queenNames = seasons[seasonId];
+
+  if (!queenNames) {
+    alert("Temporada no encontrada.");
+    return;
   }
 
-  function selectSeason(seasonId) {
-    alert("Seleccionaste la temporada: " + seasonId);
-    // Aquí puedes agregar lógica para seleccionar automáticamente las reinas
-    // según el ID de temporada recibido.
-  }
+  const container = document.getElementById('queen-container');
+  container.innerHTML = ''; // Limpia contenido anterior
+
+  const queensToShow = allQueens.filter(q => queenNames.includes(q.name));
+
+  queensToShow.forEach(queen => {
+    const card = document.createElement('div');
+    card.style.width = '120px';
+    card.style.borderRadius = '12px';
+    card.style.boxShadow = '0 0 10px hotpink';
+    card.style.background = 'rgba(255, 105, 180, 0.15)';
+    card.style.textAlign = 'center';
+    card.style.padding = '10px';
+
+    card.innerHTML = `
+      <img src="${queen.image}" alt="${queen.name}" style="width: 100%; border-radius: 10px; margin-bottom: 8px;">
+      <strong style="color: white;">${queen.name}</strong>
+    `;
+
+    container.appendChild(card);
+  });
+    }
   </script>
 </body>
 </html>
