@@ -1,4 +1,4 @@
-<!DCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -247,7 +247,11 @@ select:hover, select:focus {
     <!-- Agrega más temporadas aquí -->
   </ul>
 </div>
-  
+  <div class="container">
+  <h1>Selecciona tus Reinas</h1>
+  <input type="text" id="search" placeholder="Busca una reina..." />
+  <div id="searchResults" class="search-results"></div>
+  <div id="selectedQueens" class="selected-queens"></div>
 <!-- Menú Premier -->
 <label for="premiere">Elige tu formato de estreno</label>
 <select id="premiere" name="premiere">
@@ -339,8 +343,7 @@ select:hover, select:focus {
   <input type="checkbox" id="golden-beaver" />
 </div>
     <button class="next-button" onclick="goToFormat()">Star your Engines</button>
-  </div>
-
+  </div> <!-- cierre del .container -->
   <script>
     const queens = [
       { name: "Bebe Zahara Benet", image: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
