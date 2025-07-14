@@ -183,32 +183,71 @@ select:hover, select:focus {
   background: linear-gradient(135deg, #ff1493, #ff69b4);
   box-shadow: 0 0 35px deeppink;
 }
+    .hamburger {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1000;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+.hamburger:hover {
+  background-color: rgba(255, 105, 180, 0.7);
+}
+
+.preset-menu {
+  display: none;
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid hotpink;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  z-index: 999;
+  text-align: left;
+  min-width: 200px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.preset-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.preset-menu li {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: white;
+}
+.preset-menu li:hover {
+  color: hotpink;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   </style>
 </head>
 <body>
-  <!-- Botón hamburguesa (3 rayitas) -->
-<div id="menu-toggle" style="position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1000; width: 35px;">
-  <div style="width: 100%; height: 4px; background: hotpink; margin: 6px 0; border-radius: 2px; box-shadow: 0 0 8px hotpink;"></div>
-  <div style="width: 100%; height: 4px; background: hotpink; margin: 6px 0; border-radius: 2px; box-shadow: 0 0 8px hotpink;"></div>
-  <div style="width: 100%; height: 4px; background: hotpink; margin: 6px 0; border-radius: 2px; box-shadow: 0 0 8px hotpink;"></div>
-</div>
+  <!-- Botón de hamburguesa -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
-<!-- Menú lateral oculto -->
-<div id="side-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background: rgba(50, 0, 50, 0.95); box-shadow: -2px 0 15px rgba(255, 20, 147, 0.7); padding: 2rem 1.5rem; transition: right 0.3s ease; z-index: 999; border-radius: 0 0 0 15px;">
-  <h3 style="color: hotpink; margin-bottom: 1.5rem; font-weight: 900; text-shadow: 0 0 8px hotpink;">Moldes de Temporada</h3>
-  <button onclick="selectSeason('us1')" style="width: 100%; padding: 0.8rem; margin-bottom: 12px; border: none; border-radius: 15px; background: hotpink; color: black; font-weight: 900; font-size: 1rem; cursor: pointer; box-shadow: 0 0 12px hotpink; transition: background 0.3s ease;">
-    US Temporada 1
-  </button>
+<!-- Menú desplegable -->
+<div id="presetMenu" class="preset-menu">
+  <h3>Temporadas predefinidas</h3>
+  <ul>
+    <li onclick="selectSeason('us_s1')">US Temporada 1</li>
+    <li onclick="selectSeason('uk_s1')">UK Temporada 1</li>
+    <!-- Agrega más temporadas aquí -->
+  </ul>
 </div>
-  <div class="container">
-    <h1>Busca y selecciona tus reinas</h1>
-    <input type="text" id="search" placeholder="Escribe el nombre de una reina..." />
-    <div class="search-results" id="searchResults"></div>
-    <div class="selected-queens" id="selectedQueens">
-      <h2>Reinas seleccionadas</h2>
-    </div>
-    <hr style="border-color: hotpink; margin: 1rem 0;">
-
+  
 <!-- Menú Premier -->
 <label for="premiere">Elige tu formato de estreno</label>
 <select id="premiere" name="premiere">
@@ -377,50 +416,16 @@ select:hover, select:focus {
       localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
       window.location.href = 'select-format.html'; // Asegúrate de tener esta página creada
     }
-    const burger = document.getElementById('burger');
-const presetMenu = document.getElementById('presetMenu');
-
-burger.addEventListener('click', () => {
-  if (presetMenu.style.right === '0px') {
-    presetMenu.style.right = '-220px';
-    burger.style.transform = 'rotate(0deg)';
-  } else {
-    presetMenu.style.right = '0px';
-    burger.style.transform = 'rotate(90deg)';
+    function toggleMenu() {
+    const menu = document.getElementById("presetMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
   }
-});
 
-const presets = {
-  "US Temporada 1": [
-    "Bebe Zahara Benet",
-    "Nina Flowers",
-    "Rebecca Glasscock",
-    "Shannel",
-    "Jade Sotomayor",
-    "Ongina",
-    "Akashia",
-    "Tammy Brown",
-    "Victoria Porkchop Parker"
-  ],
-};
-
-function applyPreset(name) {
-  const queensToAdd = presets[name];
-  if (!queensToAdd) return;
-
-  selectedQueens.length = 0; // limpia selección actual
-
-  queensToAdd.forEach(presetName => {
-    const queen = queens.find(q => q.name === presetName);
-    if (queen) {
-      selectedQueens.push(queen);
-    }
-  });
-
-  renderSelectedQueens();
-  presetMenu.style.right = '-220px'; // oculta menú
-  burger.style.transform = 'rotate(0deg)';
-}
+  function selectSeason(seasonId) {
+    alert("Seleccionaste la temporada: " + seasonId);
+    // Aquí puedes agregar lógica para seleccionar automáticamente las reinas
+    // según el ID de temporada recibido.
+  }
   </script>
 </body>
 </html>
