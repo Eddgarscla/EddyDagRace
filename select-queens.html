@@ -308,7 +308,7 @@
 
     <button class="next-button" onclick="startSimulation()">Iniciar temporada</button>
   </div>
-  
+
 <script>
   const queens = [
     { name: "Bebe Zahara Benet", image: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
@@ -322,5 +322,76 @@
     { name: "Victoria Porkchop Parker", image: "https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" }
   ];
 
-  // El resto de tu código JavaScript sigue aquí, ejemplo búsqueda, selección, etc...
-</script>
+  const searchInput = document.getElementById('search');
+  const searchResults = document.getElementById('searchResults');
+  const selectedQueensDiv = document.getElementById('selectedQueens');
+  const selectedQueens = [];
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    searchResults.innerHTML = '';
+
+    if (!query) return;
+
+    const filtered = queens.filter(q => q.name.toLowerCase().includes(query));
+    filtered.forEach(queen => {
+      const card = document.createElement('div');
+      card.className = 'queen-card';
+      card.innerHTML = `
+        <img src="${queen.image}" alt="${queen.name}" />
+        <span>${queen.name}</span>
+      `;
+      card.onclick = () => selectQueen(queen);
+      searchResults.appendChild(card);
+    });
+  });
+
+  function selectQueen(queen) {
+    if (selectedQueens.find(q => q.name === queen.name)) return;
+
+    selectedQueens.push(queen);
+    renderSelectedQueens();
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  }
+
+  function renderSelectedQueens() {
+    selectedQueensDiv.innerHTML = '<h2>Reinas seleccionadas</h2>';
+
+    selectedQueens.forEach((queen, index) => {
+      const item = document.createElement('div');
+      item.className = 'selected-queen';
+      item.innerHTML = `
+        <img src="${queen.image}" alt="${queen.name}" />
+        <span>${queen.name}</span>
+        <button class="remove-button" onclick="removeQueen(${index})">X</button>
+      `;
+      selectedQueensDiv.appendChild(item);
+    });
+  }
+
+  function removeQueen(index) {
+    selectedQueens.splice(index, 1);
+    renderSelectedQueens();
+  }
+
+  function startSimulation() {
+    if (selectedQueens.length === 0) {
+      alert("Selecciona al menos una reina para iniciar la temporada.");
+      return;
+    }
+    // Guardamos la info en localStorage
+    localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
+    localStorage.setItem('premiereFormat', document.getElementById('premiere').value);
+    localStorage.setItem('returnFormat', document.getElementById('return-format').value);
+    localStorage.setItem('seasonFormat', document.getElementById('season-format').value);
+    localStorage.setItem('finalFormat', document.getElementById('final-format').value);
+    localStorage.setItem('disableDoubleShantay', document.getElementById('toggle-doble-shantay').checked);
+    localStorage.setItem('disableDoubleSashay', document.getElementById('toggle-doble-sashay').checked);
+    localStorage.setItem('lipSyncChallenge', document.getElementById('lip-sync-challenge').value);
+    localStorage.setItem('chocolateTwist', document.getElementById('chocolate-twist').value);
+    localStorage.setItem('immunity', document.getElementById('immunity').checked);
+    localStorage.setItem('goldenBeaver', document.getElementById('golden-beaver').checked);
+
+    // Aquí iría la lógica para iniciar la simulación o redirigir a la página siguiente
+    alert("¡Tem
