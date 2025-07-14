@@ -235,6 +235,13 @@ select:hover, select:focus {
   </style>
 </head>
 <body>
+  <!-- Buscador de reinas -->
+<label for="search">Busca y selecciona tus reinas</label>
+<input type="text" id="search" placeholder="Escribe el nombre de una reina..." autocomplete="off" />
+<div id="searchResults" class="search-results"></div>
+<div id="selectedQueens" class="selected-queens">
+  <h2>Reinas seleccionadas</h2>
+</div>
   <!-- Botón de hamburguesa -->
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
@@ -344,9 +351,10 @@ select:hover, select:focus {
   <input type="checkbox" id="golden-beaver" />
 </div>
     <button class="next-button" onclick="goToFormat()">Star your Engines</button>
+    <button onclick="mostrarReinas('reinas-temporada-1')" class="bg-pink-500 text-white px-4 py-2 rounded-xl shadow hover:bg-pink-600 transition">Temporada 1</button>
   </div> <!-- cierre del .container -->
   <script>
-    const queens = [
+    let queens = [
       { name: "Bebe Zahara Benet", image: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
       { name: "Nina Flowers", image: "https://i.ibb.co/M5110YXY/Picsart-25-07-13-21-58-21-856.jpg" },
       { name: "Rebecca Glasscock", image: "https://i.ibb.co/ZRVKcWHd/Picsart-25-07-13-21-59-34-408.jpg" },
@@ -357,7 +365,7 @@ select:hover, select:focus {
       { name: "Tammy Brown", image: "https://i.ibb.co/FLgXxhZY/Picsart-25-07-13-22-06-56-137.jpg" },
       { name: "Victoria Porkchop Parker", image: "https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" }
     ];
-    const seasons = {
+    let seasons = {
   us_s1: [
     "Bebe Zahara Benet",
     "Nina Flowers",
@@ -466,6 +474,14 @@ select:hover, select:focus {
     container.appendChild(card);
   });
     }
+      function mostrarReinas(id) {
+    const contenedor = document.getElementById(id);
+    if (contenedor.classList.contains("hidden")) {
+      contenedor.classList.remove("hidden");
+    } else {
+      contenedor.classList.add("hidden");
+    }
+  }
   </script>
 </body>
 </html>
