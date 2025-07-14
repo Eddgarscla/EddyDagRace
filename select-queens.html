@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -6,101 +6,183 @@
   <title>Selecciona tus Reinas</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Arial', sans-serif;
-      color: white;
-      text-align: center;
-    }
+  margin: 0;
+  padding: 0;
+  background: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 1rem;
-      box-shadow: 0 0 20px #ff69b4;
-    }
+.container {
+  background: rgba(0,0,0,0.85);
+  border-radius: 20px;
+  box-shadow: 0 0 30px hotpink;
+  max-width: 650px;
+  width: 100%;
+  padding: 30px 40px;
+  overflow-y: auto;
+  max-height: 90vh;
+}
 
-    h1 {
-      margin-bottom: 1rem;
-    }
+h1, h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  text-shadow: 0 0 10px hotpink;
+}
 
-    input[type="text"] {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 0.5rem;
-      border: none;
-      outline: none;
-    }
+input[type="text"] {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 12px #ff69b4;
+  background-color: #330033;
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
 
-    .search-results {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+input[type="text"]:focus {
+  box-shadow: 0 0 20px deeppink;
+}
 
-    .queen-card {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+}
 
-    .queen-card img {
-      width: 60px;
-      height: auto;
-      margin-right: 1rem;
-      border-radius: 0.5rem;
-    }
+.queen-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 14px;
+  background: #440044cc;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #ff69b4;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
-    .selected-queens {
-      margin-top: 2rem;
-      text-align: left;
-    }
+.queen-card:hover {
+  background: #ff69b4;
+  color: black;
+  box-shadow: 0 0 15px deeppink;
+}
 
-    .selected-queen {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-    }
+.queen-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid hotpink;
+}
 
-    .selected-queen img {
-      width: 60px;
-      height: auto;
-      margin-right: 1rem;
-      border-radius: 0.5rem;
-    }
+.selected-queens {
+  margin-top: 1rem;
+  text-align: left;
+}
 
-    .remove-button {
-      background-color: crimson;
-      border: none;
-      color: white;
-      padding: 0.25rem 0.5rem;
-      margin-left: auto;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
+.selected-queen {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+  background: #ff69b4cc;
+  border-radius: 15px;
+  padding: 10px 15px;
+  color: black;
+  font-weight: 700;
+  box-shadow: 0 0 10px deeppink;
+}
 
-    .next-button {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      background-color: hotpink;
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
+.selected-queen img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid purple;
+}
+
+.remove-button {
+  margin-left: auto;
+  background: crimson;
+  border: none;
+  color: white;
+  font-weight: 900;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0 15px;
+  box-shadow: 0 0 8px crimson;
+  transition: background 0.3s ease;
+}
+
+.remove-button:hover {
+  background: darkred;
+}
+
+label {
+  display: block;
+  margin: 20px 0 8px 0;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px hotpink;
+}
+
+select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 15px #ff69b4;
+  background-color: #330033;
+  color: white;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select:hover, select:focus {
+  box-shadow: 0 0 25px deeppink;
+}
+
+.next-button {
+  margin-top: 2rem;
+  padding: 1.3rem 3rem;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  font-weight: 900;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 25px hotpink;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.next-button:hover {
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  box-shadow: 0 0 35px deeppink;
+}
   </style>
 </head>
 <body>
