@@ -186,6 +186,26 @@ select:hover, select:focus {
   </style>
 </head>
 <body>
+  <!-- Botón hamburguesa (3 rayitas) -->
+<div id="menu-toggle" style="position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1000; width: 35px;">
+  <div style="width: 100%; height: 4px; background: hotpink; margin: 6px 0; border-radius: 2px; box-shadow: 0 0 8px hotpink;"></div>
+  <div style="width: 100%; height: 4px; background: hotpink; margin: 6px 0; border-radius: 2px; box-shadow: 0 0 8px hotpink;"></div>
+  <div style="width: 100%; height: 4px; background: hotpink; margin: 6px 0; border-radius: 2px; box-shadow: 0 0 8px hotpink;"></div>
+</div>
+
+<!-- Menú lateral oculto -->
+<div id="side-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background: rgba(50, 0, 50, 0.95); box-shadow: -2px 0 15px rgba(255, 20, 147, 0.7); padding: 2rem 1.5rem; transition: right 0.3s ease; z-index: 999; border-radius: 0 0 0 15px;">
+  <h3 style="color: hotpink; margin-bottom: 1.5rem; font-weight: 900; text-shadow: 0 0 8px hotpink;">Moldes de Temporada</h3>
+  <button onclick="selectSeason('us1')" style="width: 100%; padding: 0.8rem; margin-bottom: 12px; border: none; border-radius: 15px; background: hotpink; color: black; font-weight: 900; font-size: 1rem; cursor: pointer; box-shadow: 0 0 12px hotpink; transition: background 0.3s ease;">
+    US Temporada 1
+  </button>
+  <button onclick="selectSeason('us2')" style="width: 100%; padding: 0.8rem; margin-bottom: 12px; border: none; border-radius: 15px; background: hotpink; color: black; font-weight: 900; font-size: 1rem; cursor: pointer; box-shadow: 0 0 12px hotpink; transition: background 0.3s ease;">
+    US Temporada 2
+  </button>
+  <button onclick="closeMenu()" style="margin-top: 2rem; width: 100%; padding: 0.6rem; background: crimson; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 900; box-shadow: 0 0 10px crimson; transition: background 0.3s ease;">
+    Cerrar
+  </button>
+</div>
   <div class="container">
     <h1>Busca y selecciona tus reinas</h1>
     <input type="text" id="search" placeholder="Escribe el nombre de una reina..." />
@@ -363,6 +383,59 @@ select:hover, select:focus {
       localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
       window.location.href = 'select-format.html'; // Asegúrate de tener esta página creada
     }
+    const menuToggle = document.getElementById('menu-toggle');
+  const sideMenu = document.getElementById('side-menu');
+
+  // Abrir / cerrar menú
+  menuToggle.addEventListener('click', () => {
+    if (sideMenu.style.right === '0px') {
+      sideMenu.style.right = '-280px';
+    } else {
+      sideMenu.style.right = '0px';
+    }
+  });
+
+  // Cerrar menú (botón)
+  function closeMenu() {
+    sideMenu.style.right = '-280px';
+  }
+
+  // Moldes con reinas predefinidas por temporada
+  const seasonTemplates = {
+    us1: [
+      { name: "Bebe Zahara Benet", image: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
+      { name: "Nina Flowers", image: "https://i.ibb.co/M5110YXY/Picsart-25-07-13-21-58-21-856.jpg" },
+      { name: "Rebecca Glasscock", image: "https://i.ibb.co/ZRVKcWHd/Picsart-25-07-13-21-59-34-408.jpg" },
+      { name: "Shannel", image: "https://i.ibb.co/tw44K2Vz/MV5-BNz-Rk-Zjk3-OTct-ZTM3-ZS00-OTFk-LTlj-ZDYt-Yz-Zm-Mj-Ez-NDVi-ODk0-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" },
+      { name: "Jade Sotomayor", image: "https://i.ibb.co/YT0J15Kt/Picsart-25-07-13-22-05-42-149.jpg" },
+      { name: "Ongina", image: "https://i.ibb.co/rKbx2XH0/Picsart-25-07-13-22-06-11-695.jpg" },
+      { name: "Akashia", image: "https://i.ibb.co/Q7N93Pzn/Picsart-25-07-13-22-06-33-456.jpg" },
+      { name: "Tammy Brown", image: "https://i.ibb.co/FLgXxhZY/Picsart-25-07-13-22-06-56-137.jpg" },
+      { name: "Victoria Porkchop Parker", image: "https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" }
+    ],
+    us2: [
+      // Aquí puedes agregar otro set para temporada 2 cuando quieras
+    ]
+  };
+
+  function selectSeason(seasonKey) {
+    const queensList = seasonTemplates[seasonKey];
+    if (!queensList) return alert('Temporada no definida.');
+
+    // Limpiar selección actual
+    selectedQueens.length = 0;
+
+    // Añadir reinas del molde seleccionado
+    queensList.forEach(queen => {
+      // Evita duplicados
+      if (!selectedQueens.find(q => q.name === queen.name)) {
+        selectedQueens.push(queen);
+      }
+    });
+
+    renderSelectedQueens();
+    closeMenu();
+  }
   </script>
 </body>
 </html>
