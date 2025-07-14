@@ -383,59 +383,54 @@ select:hover, select:focus {
       localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
       window.location.href = 'select-format.html'; // Asegúrate de tener esta página creada
     }
-    const menuToggle = document.getElementById('menu-toggle');
-  const sideMenu = document.getElementById('side-menu');
+    const burger = document.getElementById('burger');
+const presetMenu = document.getElementById('presetMenu');
 
-  // Abrir / cerrar menú
-  menuToggle.addEventListener('click', () => {
-    if (sideMenu.style.right === '0px') {
-      sideMenu.style.right = '-280px';
-    } else {
-      sideMenu.style.right = '0px';
+burger.addEventListener('click', () => {
+  if (presetMenu.style.right === '0px') {
+    presetMenu.style.right = '-220px';
+    burger.style.transform = 'rotate(0deg)';
+  } else {
+    presetMenu.style.right = '0px';
+    burger.style.transform = 'rotate(90deg)';
+  }
+});
+
+// Presets de temporadas con reinas
+const presets = {
+  "US Temporada 1": [
+    "Bebe Zahara Benet",
+    "Nina Flowers",
+    "Rebecca Glasscock",
+    "Shannel",
+    "Jade Sotomayor",
+    "Ongina",
+    "Akashia",
+    "Tammy Brown",
+    "Victoria Porkchop Parker"
+  ],
+  // Puedes agregar más temporadas aquí siguiendo el mismo formato
+};
+
+function applyPreset(name) {
+  const queensToAdd = presets[name];
+  if (!queensToAdd) return;
+
+  // Limpiamos selección actual
+  selectedQueens.length = 0;
+
+  // Agregamos reinas del preset
+  queensToAdd.forEach(presetName => {
+    const queen = queens.find(q => q.name === presetName);
+    if (queen) {
+      selectedQueens.push(queen);
     }
   });
 
-  // Cerrar menú (botón)
-  function closeMenu() {
-    sideMenu.style.right = '-280px';
-  }
-
-  // Moldes con reinas predefinidas por temporada
-  const seasonTemplates = {
-    us1: [
-      { name: "Bebe Zahara Benet", image: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
-      { name: "Nina Flowers", image: "https://i.ibb.co/M5110YXY/Picsart-25-07-13-21-58-21-856.jpg" },
-      { name: "Rebecca Glasscock", image: "https://i.ibb.co/ZRVKcWHd/Picsart-25-07-13-21-59-34-408.jpg" },
-      { name: "Shannel", image: "https://i.ibb.co/tw44K2Vz/MV5-BNz-Rk-Zjk3-OTct-ZTM3-ZS00-OTFk-LTlj-ZDYt-Yz-Zm-Mj-Ez-NDVi-ODk0-Xk-Ey-Xk-Fqc-Gc-V1-FMjpg-UX1000.jpg" },
-      { name: "Jade Sotomayor", image: "https://i.ibb.co/YT0J15Kt/Picsart-25-07-13-22-05-42-149.jpg" },
-      { name: "Ongina", image: "https://i.ibb.co/rKbx2XH0/Picsart-25-07-13-22-06-11-695.jpg" },
-      { name: "Akashia", image: "https://i.ibb.co/Q7N93Pzn/Picsart-25-07-13-22-06-33-456.jpg" },
-      { name: "Tammy Brown", image: "https://i.ibb.co/FLgXxhZY/Picsart-25-07-13-22-06-56-137.jpg" },
-      { name: "Victoria Porkchop Parker", image: "https://i.ibb.co/hxg6vTkH/Picsart-25-07-13-22-07-12-850.jpg" }
-    ],
-    us2: [
-      // Aquí puedes agregar otro set para temporada 2 cuando quieras
-    ]
-  };
-
-  function selectSeason(seasonKey) {
-    const queensList = seasonTemplates[seasonKey];
-    if (!queensList) return alert('Temporada no definida.');
-
-    // Limpiar selección actual
-    selectedQueens.length = 0;
-
-    // Añadir reinas del molde seleccionado
-    queensList.forEach(queen => {
-      // Evita duplicados
-      if (!selectedQueens.find(q => q.name === queen.name)) {
-        selectedQueens.push(queen);
-      }
-    });
-
-    renderSelectedQueens();
-    closeMenu();
-  }
+  renderSelectedQueens();
+  presetMenu.style.right = '-220px'; // Ocultamos menú al seleccionar
+  burger.style.transform = 'rotate(0deg)';
+}
   </script>
 </body>
 </html>
