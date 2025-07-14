@@ -1,228 +1,316 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Selecciona tus Reinas y Configura</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Arial', sans-serif;
-      color: white;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 2rem auto 4rem auto;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 1rem;
-      box-shadow: 0 0 20px #ff69b4;
-      text-align: left;
-    }
-
-    h1 {
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    input[type="text"], select {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 0.5rem;
-      border: none;
-      outline: none;
-    }
-
-    .search-results {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-height: 250px;
-      overflow-y: auto;
-    }
-
-    .queen-card {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .queen-card:hover {
-      background-color: rgba(255, 105, 180, 0.4);
-    }
-
-    .queen-card img {
-      width: 60px;
-      height: auto;
-      margin-right: 1rem;
-      border-radius: 0.5rem;
-    }
-
-    .selected-queens {
-      margin-top: 2rem;
-      text-align: left;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .selected-queen {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-    }
-
-    .selected-queen img {
-      width: 60px;
-      height: auto;
-      margin-right: 1rem;
-      border-radius: 0.5rem;
-    }
-
-    .remove-button {
-      background-color: crimson;
-      border: none;
-      color: white;
-      padding: 0.25rem 0.5rem;
-      margin-left: auto;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-      color: hotpink;
-    }
-
-    select, input[type="checkbox"] {
-      margin-top: 0.3rem;
-      margin-bottom: 1rem;
-    }
-
-    .options-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .option-item {
-      flex: 1 1 45%;
-    }
-
-    .next-button {
-      display: block;
-      margin: 2rem auto 0 auto;
-      padding: 1rem 3rem;
-      font-size: 1.5rem;
-      background-color: hotpink;
-      color: white;
-      border: none;
-      border-radius: 0.7rem;
-      cursor: pointer;
-      box-shadow: 0 0 15px hotpink;
-      transition: background-color 0.3s;
-    }
-
-    .next-button:hover {
-      background-color: deeppink;
-      box-shadow: 0 0 25px deeppink;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selecciona tus Reinas y Configura</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    background: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+  .container {
+    background: rgba(0,0,0,0.75);
+    border-radius: 15px;
+    box-shadow: 0 0 20px hotpink;
+    max-width: 650px;
+    width: 100%;
+    padding: 20px 30px;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+  h1, h2 {
+    margin-bottom: 1rem;
+    font-weight: 900;
+    text-shadow: 0 0 8px hotpink;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px #ff69b4;
+    background-color: #222;
+    color: white;
+  }
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+  }
+  .queen-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 12px;
+    background: #330033cc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 5px #ff69b4;
+  }
+  .queen-card:hover {
+    background: #ff69b4;
+    color: black;
+    box-shadow: 0 0 12px #ff1493;
+  }
+  .queen-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid hotpink;
+  }
+  .selected-queens {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  .selected-queen {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    background: #ff69b4cc;
+    border-radius: 10px;
+    padding: 6px 12px;
+    color: black;
+    font-weight: 700;
+    box-shadow: 0 0 8px #ff1493;
+  }
+  .selected-queen img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid purple;
+  }
+  .remove-button {
+    margin-left: auto;
+    background: crimson;
+    border: none;
+    color: white;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0 12px;
+    box-shadow: 0 0 5px crimson;
+    transition: background 0.3s ease;
+  }
+  .remove-button:hover {
+    background: darkred;
+  }
+  label {
+    display: block;
+    margin: 10px 0 6px 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px hotpink;
+  }
+  select, .toggle {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px #ff69b4;
+    background-color: #222;
+    color: white;
+    appearance: none;
+    cursor: pointer;
+  }
+  .toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #330033cc;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin: 6px 0 12px 0;
+    box-shadow: 0 0 6px #ff69b4;
+  }
+  .toggle-container label {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    user-select: none;
+    text-shadow: none;
+  }
+  .toggle-container input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    -webkit-appearance: none;
+    background: #888;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .toggle-container input[type="checkbox"]:checked {
+    background: hotpink;
+    box-shadow: 0 0 12px hotpink;
+  }
+  .toggle-container input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    background: white;
+    transition: 0.3s;
+  }
+  .toggle-container input[type="checkbox"]:checked::before {
+    left: 21px;
+  }
+  .next-button {
+    margin-top: 1.5rem;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    background-color: hotpink;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 0 0 20px hotpink;
+    transition: background 0.3s ease;
+  }
+  .next-button:hover {
+    background-color: deeppink;
+    box-shadow: 0 0 25px deeppink;
+  }
+</style>
 </head>
 <body>
   <div class="container">
     <h1>Busca y selecciona tus reinas</h1>
-    <input type="text" id="search" placeholder="Escribe el nombre de una reina..." />
+    <input type="text" id="search" placeholder="Escribe el nombre de una reina..." autocomplete="off" />
     <div class="search-results" id="searchResults"></div>
-
     <div class="selected-queens" id="selectedQueens">
       <h2>Reinas seleccionadas</h2>
     </div>
 
-    <!-- Menús de configuración -->
-    <label for="premiere">Formato de Premiere</label>
-    <select id="premiere">
-      <option value="normal">Premiere Normal</option>
-      <option value="sin-eliminacion">Premiere Sin Eliminación</option>
-      <option value="entrada-tardia">Premiere con Entrada Tardía</option>
-      <option value="doble-premiere">Doble Premiere</option>
-      <option value="doble-premiere-sin-eliminacion">Doble Premiere Sin Eliminación</option>
-      <option value="porkchop-premiere">Porkchop Premiere</option>
-      <option value="rate-a-queen-premiere">Rate a Queen Premiere</option>
-      <option value="uk3-premiere">UK3 Premiere</option>
-      <option value="all-stars-10-premiere">All Stars 10 (3 brackets)</option>
+    <hr style="border-color: hotpink; margin: 1rem 0;">
+
+    <!-- Menú Premiere -->
+    <label for="premiere">Elige tu formato de estreno</label>
+    <select id="premiere" name="premiere">
+      <option value="estreno_normal">Estreno normal</option>
+      <option value="estreno_sin_eliminacion">Estreno normal (sin eliminación)</option>
+      <option value="estreno_slayers">Estreno normal (slayers)</option>
+      <option value="estreno_entrada_tardia">Estreno normal (entrada tardía)</option>
+      <option value="doble_estreno">Doble estreno</option>
+      <option value="doble_estreno_sin_eliminacion">Doble estreno (sin eliminación)</option>
+      <option value="doble_estreno_concurso_talentos">Doble estreno (concurso de talentos)</option>
+      <option value="doble_estreno_grupo_chicas">Doble estreno (grupo de chicas)</option>
+      <option value="estreno_porkchop">Estreno de porkchop</option>
+      <option value="rate_a_queen">Rate a queen</option>
+      <option value="estreno_uk3">Estreno UK3</option>
+      <option value="brackets_as10">Brackets (AS10)</option>
     </select>
 
-    <label for="retorno">Formato de Retorno</label>
-    <select id="retorno">
+    <!-- Menú Retorno -->
+    <label for="return-format">Elige el formato de retorno</label>
+    <select id="return-format" name="return-format">
       <option value="nadie">Nadie</option>
-      <option value="elige-quien-regresa">Elige Quién Regresa</option>
-      <option value="al-azar">Regresa Al Azar</option>
-      <option value="lip-sync-smackdown">Lip Sync Smackdown</option>
-      <option value="lalaparuza">Lalaparuza</option>
-      <option value="jurado-elige">Jurado Elige</option>
-      <option value="wild-card">Wild Card (All Stars 10)</option>
+      <option value="elige_quien_regresa">Elige quien regresa</option>
+      <option value="regresa_al_azar">Regresa alguien al azar</option>
+      <option value="lip_sync_smackdown">Lip sync smackdown</option>
+      <option value="lalaparuza">LaLaPaRUza</option>
+      <option value="jurado_elige">Jurado elige</option>
+      <option value="wild_card_as10">Wild card (AS10)</option>
     </select>
 
-    <label for="temporada">Formato de Temporada</label>
-    <select id="temporada">
-      <option value="clasico">Clásico</option>
-      <option value="all-stars">All Stars</option>
-      <option value="otros">Otros</option>
+    <!-- Menú Temporada -->
+    <label for="season-format">Elige el formato de tu temporada</label>
+    <select id="season-format" name="season-format">
+      <option value="regular">Regular</option>
+      <option value="tailandia">Tailandia</option>
+      <option value="equipos_as1">Equipos (AS1)</option>
+      <option value="lip_sync_for_your_legacy">Lip-sync for your legacy</option>
+      <option value="lip_sync_assassins">Lip-sync assassins</option>
+      <option value="brackets_as10">Brackets (AS10)</option>
     </select>
 
-    <label for="final">Formato de Final</label>
-    <select id="final">
-      <option value="normal">Final Normal</option>
-      <option value="final-doble">Final Doble</option>
-      <option value="final-3">Final 3</option>
+    <!-- Menú Final -->
+    <label for="final-format">Elige el formato de tu final</label>
+    <select id="final-format" name="final-format">
+      <option value="top5">Top 5</option>
+      <option value="top4">Top 4</option>
+      <option value="top3">Top 3</option>
+      <option value="top2">Top 2</option>
+      <option value="final_equipos_top4_top2">Final de equipos / Top 4 a Top 2</option>
+      <option value="lip_sync_for_the_crown">Lip-sync for the crown</option>
+      <option value="lip_sync_for_the_finally">Lip-sync for the finally</option>
+      <option value="votacion_jurado">Votación del jurado</option>
+      <option value="lip_sync_tournament_as10">Lip-sync tournament (AS10)</option>
+      <option value="final_aleatorio">Final aleatorio</option>
     </select>
 
-    <div class="options-group">
-      <div class="option-item">
-        <input type="checkbox" id="dobleShantay" />
-        <label for="dobleShantay">Doble Shantay</label>
-      </div>
-      <div class="option-item">
-        <input type="checkbox" id="dobleSashay" />
-        <label for="dobleSashay">Doble Sashay</label>
-      </div>
-      <div class="option-item">
-        <input type="checkbox" id="lipSyncSmackdown" />
-        <label for="lipSyncSmackdown">Desafíos Lip Sync Smackdown</label>
-      </div>
-      <div class="option-item">
-        <input type="checkbox" id="inmunidad" />
-        <label for="inmunidad">Inmunidad</label>
-      </div>
-      <div class="option-item">
-        <input type="checkbox" id="goldenBeaver" />
-        <label for="goldenBeaver">Golden Beaver</label>
-      </div>
+    <!-- Opciones -->
+    <label>Opciones</label>
+
+    <div class="toggle-container">
+      <label for="toggle-doble-shantay">Desactivar Doble Shantay</label>
+      <input type="checkbox" id="toggle-doble-shantay" />
     </div>
 
-    <button class="next-button" onclick="startSeason()">Start Your Engines</button>
+    <div class="toggle-container">
+      <label for="toggle-doble-sashay">Desactivar Doble Sashay</label>
+      <input type="checkbox" id="toggle-doble-sashay" />
+    </div>
+
+    <label>Desafío de sincronización de labios</label>
+    <select id="lip-sync-challenge" name="lip-sync-challenge">
+      <option value="ninguno">Ninguno</option>
+      <option value="lalaparuza_smackdown">LaLaPaRUza Smackdown</option>
+      <option value="reunion_smackdown">Reunion Smackdown</option>
+    </select>
+
+    <label>Barra de chocolate twist</label>
+    <select id="chocolate-twist" name="chocolate-twist">
+      <option value="aleatorio">Aleatorio</option>
+      <option value="elegible">Elegible</option>
+    </select>
+
+    <label>Giros</label>
+    <div class="toggle-container">
+      <label for="immunity">Inmunidad</label>
+      <input type="checkbox" id="immunity" />
+    </div>
+    <div class="toggle-container">
+      <label for="golden-beaver">Golden Beaver</label>
+      <input type="checkbox" id="golden-beaver" />
+    </div>
+
+    <button class="next-button" onclick="startSimulation()">Iniciar temporada</button>
   </div>
 
   <script>
+    // Lista de reinas con nombre e imagen
     const queens = [
       { name: "Bebe Zahara Benet", image: "https://i.ibb.co/8ndFDyyq/Picsart-25-07-13-21-40-34-985.jpg" },
       { name: "Nina Flowers", image: "https://i.ibb.co/M5110YXY/Picsart-25-07-13-21-58-21-856.jpg" },
@@ -243,7 +331,6 @@
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase();
       searchResults.innerHTML = '';
-
       if (!query) return;
 
       const filtered = queens.filter(q => q.name.toLowerCase().includes(query));
@@ -261,37 +348,3 @@
 
     function selectQueen(queen) {
       if (selectedQueens.find(q => q.name === queen.name)) return;
-
-      selectedQueens.push(queen);
-      renderSelectedQueens();
-      searchInput.value = '';
-      searchResults.innerHTML = '';
-    }
-
-    function renderSelectedQueens() {
-      const list = selectedQueensDiv;
-      list.innerHTML = '<h2>Reinas seleccionadas</h2>';
-
-      selectedQueens.forEach((queen, index) => {
-        const item = document.createElement('div');
-        item.className = 'selected-queen';
-        item.innerHTML = `
-          <img src="${queen.image}" alt="${queen.name}" />
-          <span>${queen.name}</span>
-          <button class="remove-button" onclick="removeQueen(${index})">X</button>
-        `;
-        list.appendChild(item);
-      });
-    }
-
-    function removeQueen(index) {
-      selectedQueens.splice(index, 1);
-      renderSelectedQueens();
-    }
-
-    function startSeason() {
-      if (selectedQueens.length === 0) {
-        alert("Selecciona al menos una reina para continuar.");
-        return;
-      }
-      // Guardar todo en localStorage
