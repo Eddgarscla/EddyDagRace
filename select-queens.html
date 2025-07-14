@@ -222,8 +222,9 @@
       <h2>Reinas seleccionadas</h2>
     </div>
 
-    <!-- Botón para abrir menú de temporadas abajo -->
-    <button id="seasonButton">Temporadas predefinidas</button>
+<button id="startSimulationButton" style="margin-top:20px; padding:1rem 2.5rem; font-size:1.2rem; font-weight:900; border-radius:25px; border:none; cursor:pointer; background: linear-gradient(135deg, #ff69b4, #ff1493); color:white; box-shadow: 0 0 25px hotpink; text-transform:uppercase; letter-spacing:2px;">
+  Start your engines!
+</button>
   </div>
 
   <!-- Menú de temporadas predefinidas -->
@@ -363,6 +364,26 @@
 
     // Exponer selectSeason para que funcione el onclick inline
     window.selectSeason = selectSeason;
+
+    // Tomamos el botón por su ID
+  const startButton = document.getElementById('startSimulationButton');
+
+  // Función que se ejecuta al pulsar el botón
+  startButton.addEventListener('click', () => {
+    // Obtenemos las reinas seleccionadas guardadas en localStorage
+    const selectedQueens = JSON.parse(localStorage.getItem('selectedQueens')) || [];
+
+    if (selectedQueens.length === 0) {
+      alert('Selecciona al menos una reina para continuar.');
+      return;
+    }
+
+    // Guardamos las reinas seleccionadas (por si no están guardadas)
+    localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
+
+    // Redirigimos a la página de simulación (cambia el nombre si quieres)
+    window.location.href = 'simulacion.html';
+  });
 
   </script>
 </body>
