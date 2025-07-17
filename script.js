@@ -1,3 +1,12 @@
+const selected = localStorage.getItem("selectedQueens");
+console.log("Reinas recibidas desde localStorage:", selected);
+
+let queens = [];
+try {
+  queens = JSON.parse(selected);
+} catch (e) {
+  console.error("Error al convertir las reinas desde localStorage:", e);
+}
 function startSimulation() {
   const selectedQueens = getSelectedQueens(); // esta función depende de cómo guardes las seleccionadas
   localStorage.setItem("selectedQueens", JSON.stringify(selectedQueens));
