@@ -1,4 +1,5 @@
 console.log("Script.js v2 cargado ✅");
+alert("Script.js v2 ejecutado en brackets ✅");
 const selected = localStorage.getItem("selectedQueens");
 console.log("Reinas recibidas desde localStorage:", selected);
 
