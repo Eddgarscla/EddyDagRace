@@ -1,129 +1,92 @@
-body {
-  margin: 0;
-  font-family: 'Impact', sans-serif;
-  background: linear-gradient(135deg, #ff69b4, #8a2be2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.container {
-  text-align: center;
-  color: white;
-  animation: fadeIn 2s ease-out;
-}
-
-.animated-text {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  animation: bounceIn 1.5s ease-out;
-}
-
-button {
-  background: white;
-  color: #8a2be2;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-button:hover {
-  transform: scale(1.1);
-  background-color: #f8f8f8;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes bounceIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  60% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
-}
-.queen-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  background-color: #ff69b41a;
-  border-radius: 12px;
-  box-shadow: 0 0 8px hotpink;
-  margin-bottom: 10px;
-  color: white;
-  font-weight: bold;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-  cursor: grab;
-}
-
-.queen-card:hover {
-  background-color: #ff69b433;
-  transform: scale(1.02);
-}
-
-.queen-card img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid deeppink;
-}
-/* Fondo general para mantener la coherencia visual */
+/* Fondo general glitter */
 body.brackets-page {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
   background-image: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Arial', sans-serif;
   color: white;
   text-align: center;
   padding: 2rem;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Título principal */
+/* Glitter animado sutil por encima */
+body.brackets-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.ibb.co/Y3Rx0Yz/glitter.gif');
+  background-size: cover;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animaciones suaves */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Títulos glamourosos */
 .page-title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: hotpink;
-  text-shadow: 1px 1px 3px black;
+  font-family: 'Segoe UI Black', sans-serif;
+  font-size: 3rem;
+  color: #ffb3ec;
+  text-shadow: 2px 2px 5px hotpink, 0 0 10px fuchsia;
+  border-bottom: 3px solid hotpink;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: fadeSlideUp 0.8s ease-out;
 }
 
-/* Subtítulo */
 .page-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #ffe0f0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ffd9f7;
+  text-shadow: 1px 1px 3px deeppink;
+  margin-bottom: 2rem;
+  animation: fadeSlideUp 1s ease-out;
 }
 
-/* Botones */
+/* Botones fabulosos */
 .btn {
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: hotpink;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #ff69b4, #ff1493);
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 30px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.5);
+  animation: fadeSlideUp 1.2s ease-out;
 }
 .btn:hover {
+  background: linear-gradient(to right, #ff1493, #ff69b4);
   transform: scale(1.05);
-  background-color: deeppink;
+  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.7);
 }
 
-/* Contenedor de brackets */
+/* Contenedor principal */
 .brackets-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 2rem;
+  animation: fadeSlideUp 1.3s ease-out;
 }
 
 /* Cada bracket */
@@ -137,7 +100,7 @@ body.brackets-page {
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Lista de reinas en cada bracket */
+/* Lista de reinas */
 .bracket-list {
   list-style: none;
   padding: 0;
@@ -156,7 +119,7 @@ body.brackets-page {
   margin-right: 10px;
 }
 
-/* Contenedor de la piscina de reinas */
+/* Contenedor de reinas sueltas */
 .queen-pool {
   display: flex;
   flex-wrap: wrap;
@@ -165,72 +128,7 @@ body.brackets-page {
   margin: 1.5rem 0;
 }
 
-/* Tarjeta de cada reina */
-.queen-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid hotpink;
-  border-radius: 15px;
-  padding: 10px;
-  width: 120px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
-}
-.queen-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 5px;
-}
-.queen-card span {
-  display: block;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-/* Botón final */
-.btn-start {
-  margin-top: 2rem;
-}
-/* Mejora de botones */
-.btn {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, hotpink, deeppink);
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
-  font-weight: 800;
-  text-transform: uppercase;
-  box-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
-  transition: all 0.3s ease-in-out;
-}
-.btn:hover {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, deeppink, purple);
-  box-shadow: 0 0 15px rgba(255, 20, 147, 0.9);
-}
-
-/* Títulos más glamurosos */
-.page-title {
-  font-family: 'Segoe UI Black', sans-serif;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  font-size: 3rem;
-  margin-bottom: 0.3rem;
-  color: #ffb3ec;
-}
-
-.page-subtitle {
-  font-family: 'Segoe UI', sans-serif;
-  font-weight: 500;
-  color: #ffd6f5;
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-}
-
-/* Tarjetas de reina más fabulosas */
+/* Tarjeta de reina */
 .queen-card {
   background: rgba(255, 255, 255, 0.15);
   border: 3px solid #ff69b4;
@@ -253,76 +151,14 @@ body.brackets-page {
   border: 2px solid white;
   margin-bottom: 8px;
 }
-body.brackets-page::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://i.ibb.co/Y3Rx0Yz/glitter.gif');
-  background-size: cover;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: 0;
-}
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.queen-card span {
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
-.page-title,
-.page-subtitle,
-.bracket-controls,
-.brackets-container,
+/* Botón de iniciar competencia */
 .btn-start {
-  animation: fadeSlideUp 0.8s ease-out;
-}
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px hotpink;
-  transition: all 0.2s ease;
-}
-.page-title {
-  font-size: 2.5rem;
-  color: #fff;
-  text-shadow: 2px 2px 5px hotpink, 0 0 10px fuchsia;
-  border-bottom: 3px solid hotpink;
-  padding-bottom: 10px;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.page-subtitle {
-  font-size: 1.2rem;
-  color: #ffd9f7;
-  text-shadow: 1px 1px 3px deeppink;
-  margin-bottom: 2rem;
-}
-.btn {
-  background: linear-gradient(to right, #ff69b4, #ff1493);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.5);
-}
-
-.btn:hover {
-  background: linear-gradient(to right, #ff1493, #ff69b4);
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.7);
+  margin-top: 2rem;
+  animation: fadeSlideUp 1.5s ease-out;
 }
