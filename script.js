@@ -4,9 +4,8 @@ function startSimulation() {
   window.location.href = "brackets.html";
 }
 window.addEventListener("DOMContentLoaded", () => {
-  const queenPool = document.getElementById("queenPool");
-
-  // --- script.js completo para brackets.html ---
+  
+// --- script.js completo para brackets.html ---
 
 // Recupera las reinas seleccionadas del localStorage
 const selectedQueens = JSON.parse(localStorage.getItem('selectedQueens')) || [];
