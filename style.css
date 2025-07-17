@@ -289,3 +289,4 @@ body.brackets-page::before {
   box-shadow: 0 0 10px hotpink;
   transition: all 0.2s ease;
 }
+body.brackets-page { border : 5px solid red; }
