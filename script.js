@@ -1,3 +1,5 @@
 function startSimulation() {
-  window.location.href = "select-format.html";
+  const selectedQueens = getSelectedQueens(); // esta función depende de cómo guardes las seleccionadas
+  localStorage.setItem("selectedQueens", JSON.stringify(selectedQueens));
+  window.location.href = "brackets.html";
 }
