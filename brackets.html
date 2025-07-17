@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Stars 10 - Brackets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="brackets-page">
+  <h1 class="page-title">🎤 All Stars 10: Bracket Distribution</h1>
+  <p class="page-subtitle">Distribuye las 18 reinas en 3 brackets de 6</p>  <div class="bracket-controls">
+    <button id="randomAssign" class="btn">Asignar al azar</button>
+    <button id="manualAssign" class="btn">Asignar manualmente</button>
+  </div>  <div id="queenPool" class="queen-pool">
+    <!-- Aquí aparecerán las reinas disponibles -->
+  </div>  <div class="brackets-container">
+    <div class="bracket" id="bracketA">
+      <h2>Bracket A</h2>
+      <ul class="bracket-list" id="listA"></ul>
+    </div>
+    <div class="bracket" id="bracketB">
+      <h2>Bracket B</h2>
+      <ul class="bracket-list" id="listB"></ul>
+    </div>
+    <div class="bracket" id="bracketC">
+      <h2>Bracket C</h2>
+      <ul class="bracket-list" id="listC"></ul>
+    </div>
+  </div>  <div class="btn-start">
+    <button id="startEpisodes" class="btn start">Start the Competition!</button>
+  </div>  <script src="script.js"></script></body>
+</html>
