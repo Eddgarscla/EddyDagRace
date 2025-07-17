@@ -239,12 +239,12 @@
         alert('Selecciona al menos una reina para empezar la simulación.');
         return;
       }
-      // Aquí puedes guardar las reinas seleccionadas y redirigir a la simulación
-      // Ejemplo:
-      localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
-      alert('¡Simulación iniciada con ' + selectedQueens.length + ' reinas!');
-      // window.location.href = 'brackets.html'; // Descomenta cuando tengas la página
-     });
+        // Guardar las reinas seleccionadas
+  localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
+
+  // Redirigir directo a brackets.html sin avisos
+  window.location.href = 'brackets.html';
+});
   </script>
 </body>
 </html>
