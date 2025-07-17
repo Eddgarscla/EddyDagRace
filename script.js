@@ -6,36 +6,24 @@ function startSimulation() {
 window.addEventListener("DOMContentLoaded", () => {
   const queenPool = document.getElementById("queenPool");
 
-  // Recuperar las reinas seleccionadas del localStorage
-  const storedQueens = localStorage.getItem("selectedQueens");
-  if (!storedQueens) {
-    queenPool.innerHTML = "<p style='color:white;'>No hay reinas seleccionadas 😢</p>";
-    return;
-  }
+  // --- script.js completo para brackets.html ---
 
-  const queens = JSON.parse(storedQueens);
-
-  // Mostrar cada reina en el pool
-  queens.forEach((queen, index) => {
-    const queenCard = document.createElement("div");
-    queenCard.classList.add("queen-card");
-    queenCard.innerHTML = `
-      <img src="${queen.image}" alt="${queen.name}" style="width:80px; height:80px; border-radius:50%; border: 3px solid hotpink;" />
-      <span style="color:white; font-weight:bold; font-size:1.1rem;">${queen.name}</span>
-    `;
-    // Más adelante podrás hacer drag & drop o asignación
-    queenPool.appendChild(queenCard);
-  });
-});
-// Leer las reinas seleccionadas guardadas en localStorage
+// Recupera las reinas seleccionadas del localStorage
 const selectedQueens = JSON.parse(localStorage.getItem('selectedQueens')) || [];
 
-// Referencias a contenedores en brackets.html
+// Referencias a elementos del DOM (asegúrate que existan en brackets.html)
 const queenPool = document.getElementById('queenPool');
 const listA = document.getElementById('listA');
 const listB = document.getElementById('listB');
 const listC = document.getElementById('listC');
 
+const brackets = {
+  A: [],
+  B: [],
+  C: []
+};
+
+// Renderiza la pool de reinas disponibles para asignar
 function renderQueenPool() {
   queenPool.innerHTML = '';
   selectedQueens.forEach((queen, idx) => {
@@ -50,14 +38,7 @@ function renderQueenPool() {
   });
 }
 
-// Arrays para guardar las reinas asignadas a cada bracket
-const brackets = {
-  A: [],
-  B: [],
-  C: []
-};
-
-// Función para agregar una reina al primer bracket disponible con espacio
+// Añade una reina a un bracket disponible
 function addToBracket(queenIndex) {
   const queen = selectedQueens[queenIndex];
 
@@ -69,7 +50,6 @@ function addToBracket(queenIndex) {
     return;
   }
 
-  // Asignar a bracket con menos de 6 reinas
   if (brackets.A.length < 6) brackets.A.push(queen);
   else if (brackets.B.length < 6) brackets.B.push(queen);
   else if (brackets.C.length < 6) brackets.C.push(queen);
@@ -77,12 +57,12 @@ function addToBracket(queenIndex) {
     alert('Todos los brackets están completos.');
     return;
   }
+
   renderBrackets();
 }
 
-// Mostrar las reinas en cada bracket
+// Renderiza las reinas asignadas en cada bracket
 function renderBrackets() {
-  // Función para renderizar una lista de reinas
   function renderList(listElement, queensArray) {
     listElement.innerHTML = '';
     queensArray.forEach((queen, idx) => {
@@ -101,48 +81,47 @@ function renderBrackets() {
   renderList(listC, brackets.C);
 }
 
-// Función para eliminar reina de un bracket
+// Elimina una reina de un bracket
 function removeFromBracket(listId, queenIndex) {
-  if (listId === 'listA') brackets.A.splice(queenIndex,1);
-  if (listId === 'listB') brackets.B.splice(queenIndex,1);
-  if (listId === 'listC') brackets.C.splice(queenIndex,1);
+  if (listId === 'listA') brackets.A.splice(queenIndex, 1);
+  else if (listId === 'listB') brackets.B.splice(queenIndex, 1);
+  else if (listId === 'listC') brackets.C.splice(queenIndex, 1);
+
   renderBrackets();
 }
 
-// Botón para asignar al azar todas las reinas
+// Asignación aleatoria de reinas a los brackets
 document.getElementById('randomAssign').addEventListener('click', () => {
-  // Limpiar brackets
   brackets.A = [];
   brackets.B = [];
   brackets.C = [];
 
-  // Shuffle (mezclar) reinas seleccionadas
   let shuffled = [...selectedQueens].sort(() => 0.5 - Math.random());
 
-  // Repartir en brackets de 6
-  brackets.A = shuffled.slice(0,6);
-  brackets.B = shuffled.slice(6,12);
-  brackets.C = shuffled.slice(12,18);
+  brackets.A = shuffled.slice(0, 6);
+  brackets.B = shuffled.slice(6, 12);
+  brackets.C = shuffled.slice(12, 18);
 
   renderBrackets();
 });
 
-// Botón para asignar manualmente (simplemente muestra la pool para elegir)
+// Asignación manual: muestra la pool para seleccionar
 document.getElementById('manualAssign').addEventListener('click', () => {
   renderQueenPool();
 });
 
-// Al cargar la página mostramos la pool para asignar
-renderQueenPool();
-
-// Aquí puedes añadir la lógica para el botón "Start the Competition!" cuando tengas los brackets listos
+// Botón para iniciar episodios (próximo paso)
 document.getElementById('startEpisodes').addEventListener('click', () => {
-  // Guardar brackets en localStorage para la próxima página (episodios)
   localStorage.setItem('bracketA', JSON.stringify(brackets.A));
   localStorage.setItem('bracketB', JSON.stringify(brackets.B));
   localStorage.setItem('bracketC', JSON.stringify(brackets.C));
 
-  // Ir a la siguiente etapa (episodios)
-  alert('¡Brackets guardados! Ahora vamos a los episodios (pendiente de crear).');
-  // window.location.href = 'episodes.html'; // Más adelante
+  // Cambia esta línea cuando tengas la página de episodios
+  alert('¡Brackets guardados! Próximo: episodios.');
+  // window.location.href = 'episodes.html';
 });
+
+// Al cargar la página, muestra la pool para asignar
+renderQueenPool();
+
+        
