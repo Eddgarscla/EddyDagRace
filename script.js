@@ -19,10 +19,6 @@ testDiv.style.padding = "10px";
 testDiv.style.zIndex = "9999";
 testDiv.innerText = "Reinas recibidas: " + (queens?.map(q => q.name).join(", ") || "ninguna");
 document.body.appendChild(testDiv);
-function startSimulation() {
-  const selectedQueens = getSelectedQueens(); // esta función depende de cómo guardes las seleccionadas
-  localStorage.setItem("selectedQueens", JSON.stringify(selectedQueens));
-  window.location.href = "brackets.html";
 }
 window.addEventListener("DOMContentLoaded", () => {
   
@@ -80,8 +76,8 @@ function addToBracket(queenIndex) {
 
   renderBrackets();
 }
-
-// Renderiza las reinas asignadas en cada bracket
+window.addToBracket = addToBracket;
+// Renderiza reinas asignadas en cada bracket
 function renderBrackets() {
   function renderList(listElement, queensArray) {
     listElement.innerHTML = '';
