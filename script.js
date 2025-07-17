@@ -66,7 +66,7 @@ function addToBracket(queenIndex) {
   if (brackets.A.find(q => q.name === queen.name) ||
       brackets.B.find(q => q.name === queen.name) ||
       brackets.C.find(q => q.name === queen.name)) {
-    alert(${queen.name} ya está asignada a un bracket.);
+    alert(`${queen.name} ya está asignada a un bracket.`);
     return;
   }
 
