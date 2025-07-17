@@ -244,6 +244,12 @@
       localStorage.setItem('selectedQueens', JSON.stringify(selectedQueens));
       alert('¡Simulación iniciada con ' + selectedQueens.length + ' reinas!');
       // window.location.href = 'brackets.html'; // Descomenta cuando tengas la página
+     document.getElementById("start-btn").addEventListener("click", () => {
+  const selectedQueens = Array.from(document.querySelectorAll(".selected-queen"))
+    .map(el => el.dataset.name); // Aquí depende cómo tengas estructuradas las reinas seleccionadas
+
+  localStorage.setItem("selectedQueens", JSON.stringify(selectedQueens));
+  window.location.href = "brackets.html"; 
     });
   </script>
 </body>
