@@ -1,3 +1,4 @@
+console.log("Script.js v2 cargado ✅");
 const selected = localStorage.getItem("selectedQueens");
 console.log("Reinas recibidas desde localStorage:", selected);
 
