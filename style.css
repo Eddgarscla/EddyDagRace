@@ -74,3 +74,121 @@ button:hover {
   object-fit: cover;
   border: 2px solid deeppink;
 }
+/* Fondo general para mantener la coherencia visual */
+body.brackets-page {
+  background-image: url('https://i.ibb.co/ZzZNFQ5G/Picsart-25-07-13-20-57-30-803.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Título principal */
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: hotpink;
+  text-shadow: 1px 1px 3px black;
+}
+
+/* Subtítulo */
+.page-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #ffe0f0;
+}
+
+/* Botones */
+.btn {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: hotpink;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+  background-color: deeppink;
+}
+
+/* Contenedor de brackets */
+.brackets-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Cada bracket */
+.bracket {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 15px;
+  width: 30%;
+  min-width: 250px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Lista de reinas en cada bracket */
+.bracket-list {
+  list-style: none;
+  padding: 0;
+}
+.bracket-list li {
+  background-color: rgba(255,255,255,0.2);
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bracket-list img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Contenedor de la piscina de reinas */
+.queen-pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+
+/* Tarjeta de cada reina */
+.queen-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid hotpink;
+  border-radius: 15px;
+  padding: 10px;
+  width: 120px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+.queen-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.queen-card span {
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Botón final */
+.btn-start {
+  margin-top: 2rem;
+}
