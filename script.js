@@ -7,6 +7,16 @@ try {
 } catch (e) {
   console.error("Error al convertir las reinas desde localStorage:", e);
 }
+const testDiv = document.createElement("div");
+testDiv.style.position = "fixed";
+testDiv.style.bottom = "20px";
+testDiv.style.left = "20px";
+testDiv.style.background = "black";
+testDiv.style.color = "lime";
+testDiv.style.padding = "10px";
+testDiv.style.zIndex = "9999";
+testDiv.innerText = "Reinas recibidas: " + (queens?.map(q => q.name).join(", ") || "ninguna");
+document.body.appendChild(testDiv);
 function startSimulation() {
   const selectedQueens = getSelectedQueens(); // esta función depende de cómo guardes las seleccionadas
   localStorage.setItem("selectedQueens", JSON.stringify(selectedQueens));
