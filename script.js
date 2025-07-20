@@ -79,6 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     renderBrackets();
   }
+  window.removeFromBracket = removeFromBracket;
 
   document.getElementById('randomAssign').addEventListener('click', () => {
     brackets.A = [];
