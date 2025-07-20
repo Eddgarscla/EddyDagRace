@@ -1,5 +1,5 @@
 console.log("Script.js v2 cargado ✅");
-alert("Script.js v2 ejecutado en brackets ✅");
+//alert("Script.js v2 ejecutado en brackets ✅");
 
 window.addEventListener("DOMContentLoaded", () => {
   // Recupera las reinas seleccionadas del localStorage
