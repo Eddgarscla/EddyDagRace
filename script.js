@@ -5,18 +5,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // Recupera las reinas seleccionadas del localStorage
   const selectedQueens = JSON.parse(localStorage.getItem('selectedQueens') || '[]');
 
-  // Mostrar mensaje visible con las reinas recibidas
-  const testDiv = document.createElement("div");
-  testDiv.style.position = "fixed";
-  testDiv.style.bottom = "20px";
-  testDiv.style.left = "20px";
-  testDiv.style.background = "black";
-  testDiv.style.color = "lime";
-  testDiv.style.padding = "10px";
-  testDiv.style.zIndex = "9999";
-  testDiv.innerText = "Reinas recibidas: " + (selectedQueens.map(q => q.name).join(", ") || "ninguna");
-  document.body.appendChild(testDiv);
-
   // Referencias a elementos del DOM
   const queenPool = document.getElementById('queenPool');
   const listA = document.getElementById('listA');
@@ -68,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (brackets.A.find(q => q.name === queen.name) ||
         brackets.B.find(q => q.name === queen.name) ||
         brackets.C.find(q => q.name === queen.name)) {
-      alert(${queen.name} ya está asignada a un bracket.);
+      alert(`${queen.name} ya está asignada a un bracket.`);
       return;
     }
 
