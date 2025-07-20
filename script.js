@@ -18,18 +18,22 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   function renderQueenPool() {
-    queenPool.innerHTML = '';
-    selectedQueens.forEach((queen, idx) => {
-      const div = document.createElement('div');
-      div.className = 'queen-card';
-      div.innerHTML = `
-        <img src="${queen.image}" alt="${queen.name}" />
-        <span>${queen.name}</span>
-        <button onclick="addToBracket(${idx})">Agregar</button>
-      `;
-      queenPool.appendChild(div);
-    });
-  }
+  queenPool.innerHTML = '';
+  selectedQueens.forEach((queen, idx) => {
+    const div = document.createElement('div');
+    div.className = 'queen-card';
+    div.innerHTML = `
+      <img src="${queen.image}" alt="${queen.name}" />
+      <span>${queen.name}</span>
+      <div class="bracket-buttons">
+        <button class="btn-ruby" onclick="addToBracket(${idx}, 'A')">A</button>
+        <button class="btn-emerald" onclick="addToBracket(${idx}, 'B')">B</button>
+        <button class="btn-sapphire" onclick="addToBracket(${idx}, 'C')">C</button>
+      </div>
+    `;
+    queenPool.appendChild(div);
+  });
+}
 
   function renderBrackets() {
     function renderList(listElement, queensArray) {
