@@ -374,3 +374,21 @@ body.brackets-page::before {
   color: #ff69b4; /* Un rosado para destacar al pasar el mouse */
   background-color: rgba(255, 20, 147, 0.2);
 }
+.bracket-list li button {
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 8px;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: color 0.3s ease;
+}
+
+.bracket-list li button:hover {
+  color: #ff1493 !important; /* rosa neón para que destaque al pasar el mouse */
+  background: transparent !important;
+  box-shadow: none !important;
+}
