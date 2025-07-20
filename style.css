@@ -284,6 +284,42 @@ body.brackets-page::before {
   object-fit: cover;
   flex-shrink: 0;
 }
+/* Brillitos animados en Bracket A */
+#bracketA::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent 70%),
+    radial-gradient(circle 3px at 50% 70%, rgba(255, 192, 203, 0.9), transparent 70%),
+    radial-gradient(circle 1.5px at 80% 40%, rgba(255, 105, 180, 0.7), transparent 70%);
+  animation: sparkleRuby 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes sparkleRuby {
+  0% {
+    background-position:
+      20% 30%,
+      50% 70%,
+      80% 40%;
+  }
+  50% {
+    background-position:
+      25% 35%,
+      45% 65%,
+      75% 45%;
+  }
+  100% {
+    background-position:
+      20% 30%,
+      50% 70%,
+      80% 40%;
+  }
+}
 
 /* Bracket B: Emerald Eleganza 💚 */
 #listB::before {
