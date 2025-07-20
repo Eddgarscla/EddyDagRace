@@ -178,3 +178,61 @@ body.brackets-page::before {
   margin-top: 2rem;
   animation: fadeSlideUp 1.5s ease-out;
 }
+/* Estilo general para títulos de cada bracket */
+.bracket h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px black;
+  animation: fadeSlideUp 1s ease-out;
+}
+
+/* Bracket A: Rubí Royalty 💎 */
+#listA::before {
+  content: "Bracket A";
+  display: block;
+  background: linear-gradient(45deg, #ff007f, #ff4dd2);
+  border: 2px solid #ff80bf;
+  box-shadow: 0 0 15px #ff4dd2;
+  text-align: center;
+  padding: 0.6rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Bracket B: Emerald Eleganza 💚 */
+#listB::before {
+  content: "Bracket B";
+  display: block;
+  background: linear-gradient(45deg, #00ff99, #009966);
+  border: 2px solid #33ffcc;
+  box-shadow: 0 0 15px #33ffcc;
+  text-align: center;
+  padding: 0.6rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Bracket C: Sapphire Supreme 🔷 */
+#listC::before {
+  content: "Bracket C";
+  display: block;
+  background: linear-gradient(45deg, #00ccff, #3366ff);
+  border: 2px solid #66ccff;
+  box-shadow: 0 0 15px #66ccff;
+  text-align: center;
+  padding: 0.6rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
