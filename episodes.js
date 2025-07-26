@@ -289,9 +289,20 @@ function actualizarPaso() {
 function iniciar() {
   reinas = cargarReinas();
   if (reinas.length === 0) return;
+
   titulo.textContent = `Episodio ${episodioActual} - Bracket ${bracketActual}`;
   pasoActual = 0;
-  actualizarPaso();
+
+  // Mostrar solo las reinas visualmente bonitas al inicio
+  infoEpisodio.textContent = "Estas son las reinas del Bracket A para este episodio:";
+  retoDiv.textContent = "";
+  tablaPuntajes.innerHTML = "";
+  mostrarReinas();
+
+  btnAnterior.disabled = true;
+  btnSiguiente.textContent = "Iniciar reto";
+  btnSiguiente.style.display = "inline-block";
+  btnSiguienteEpisodio.style.display = "none";
 }
 
 iniciar();
