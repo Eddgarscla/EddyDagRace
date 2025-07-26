@@ -107,7 +107,7 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem('bracketC', JSON.stringify(brackets.C));
 
     alert('¡Brackets guardados! Próximo: episodios.');
-    // window.location.href = 'episodes.html';
+     window.location.href = 'episodes.html';
   });
 
   // Mostrar automáticamente la pool si hay reinas cargadas
