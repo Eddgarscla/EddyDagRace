@@ -102,13 +102,13 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById('startEpisodes').addEventListener('click', () => {
-    localStorage.setItem('bracketA', JSON.stringify(brackets.A));
-    localStorage.setItem('bracketB', JSON.stringify(brackets.B));
-    localStorage.setItem('bracketC', JSON.stringify(brackets.C));
+  localStorage.setItem('bracketA', JSON.stringify(brackets.A));
+  localStorage.setItem('bracketB', JSON.stringify(brackets.B));
+  localStorage.setItem('bracketC', JSON.stringify(brackets.C));
 
-    alert('¡Brackets guardados! Próximo: episodios.');
-     window.location.href = 'episodes.html';
-  });
+  // ✅ Redirige directamente a episodios.html
+  window.location.href = 'episodes.html';
+});
 
   // Mostrar automáticamente la pool si hay reinas cargadas
   if (selectedQueens.length > 0) {
