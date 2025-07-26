@@ -214,19 +214,33 @@
 
     // Mostrar reinas seleccionadas con botón para eliminar
     function renderSelectedQueens() {
-      selectedQueensDiv.innerHTML = '<h2>Reinas seleccionadas</h2>';
-      selectedQueens.forEach((queen, idx) => {
-        const div = document.createElement('div');
-        div.className = 'selected-queen';
-        div.innerHTML = `
-          <img src="${queen.image}" alt="${queen.name}" />
-          <span>${queen.name}</span>
-          <button class="remove-button" onclick="removeQueen(${idx})">X</button>
-        `;
-        selectedQueensDiv.appendChild(div);
-      });
-    }
-
+  selectedQueensDiv.innerHTML = '<h2>Reinas seleccionadas</h2>';
+  selectedQueens.forEach((queen, idx) => {
+    const div = document.createElement('div');
+    div.className = 'selected-queen';
+    div.innerHTML = `
+      <img src="${queen.image}" alt="${queen.name}" />
+      <span>${queen.name}</span>
+      <button class="remove-button" onclick="removeQueen(${idx})">X</button>
+      <div style="margin-left:auto; display: flex; gap: 8px;">
+        <button onclick="addToBracket('${queen.name}', '${queen.image}', 'A')">A</button>
+        <button onclick="addToBracket('${queen.name}', '${queen.image}', 'B')">B</button>
+        <button onclick="addToBracket('${queen.name}', '${queen.image}', 'C')">C</button>
+      </div>
+    `;
+    selectedQueensDiv.appendChild(div);
+  });
+}
+    function addToBracket(name, image, bracket) {
+  const stored = JSON.parse(localStorage.getItem(`bracket${bracket}`)) || [];
+  if (stored.find(q => q.name === name)) {
+    alert(`${name} ya está en el Bracket ${bracket}`);
+    return;
+  }
+  stored.push({ name, image });
+  localStorage.setItem(`bracket${bracket}`, JSON.stringify(stored));
+  alert(`${name} fue enviada al Bracket ${bracket} 💖`);
+}
     // Eliminar reina de seleccionadas
     function removeQueen(index) {
       selectedQueens.splice(index, 1);
