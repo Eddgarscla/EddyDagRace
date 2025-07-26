@@ -55,27 +55,48 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function addToBracket(queenIndex) {
-    const queen = selectedQueens[queenIndex];
+  const queen = selectedQueens[queenIndex];
 
-    if (brackets.A.find(q => q.name === queen.name) ||
-        brackets.B.find(q => q.name === queen.name) ||
-        brackets.C.find(q => q.name === queen.name)) {
-      alert(`${queen.name} ya está asignada a un bracket.`);
-      return;
-    }
-
-    if (brackets.A.length < 6) brackets.A.push(queen);
-    else if (brackets.B.length < 6) brackets.B.push(queen);
-    else if (brackets.C.length < 6) brackets.C.push(queen);
-    else {
-      alert('Todos los brackets están completos.');
-      return;
-    }
-
-    renderBrackets();
+  // Evita duplicados
+  if (brackets.A.find(q => q.name === queen.name) ||
+      brackets.B.find(q => q.name === queen.name) ||
+      brackets.C.find(q => q.name === queen.name)) {
+    alert(`${queen.name} ya está asignada a un bracket.`);
+    return;
   }
-  window.addToBracket = addToBracket;
 
+  // Crea los botones de selección
+  const modal = document.createElement('div');
+  modal.className = 'bracket-choice-modal';
+  modal.innerHTML = `
+    <div class="bracket-choice-inner">
+      <h3>¿A qué bracket quieres agregar a <strong>${queen.name}</strong>?</h3>
+      <div class="choice-buttons">
+        <button class="bracket-btn ruby" data-bracket="A">Bracket A 💎</button>
+        <button class="bracket-btn emerald" data-bracket="B">Bracket B 💚</button>
+        <button class="bracket-btn sapphire" data-bracket="C">Bracket C 💙</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  // Añadir eventos a los botones
+  modal.querySelectorAll('.bracket-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const chosen = btn.dataset.bracket;
+      if (brackets[chosen].length >= 6) {
+        alert(`El Bracket ${chosen} ya está lleno.`);
+      } else {
+        brackets[chosen].push(queen);
+        renderBrackets();
+      }
+      modal.remove(); // Cierra el modal
+    });
+  });
+}
+window.addToBracket = addToBracket;
+  
   function removeFromBracket(listId, queenIndex) {
     if (listId === 'listA') brackets.A.splice(queenIndex, 1);
     else if (listId === 'listB') brackets.B.splice(queenIndex, 1);
