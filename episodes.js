@@ -37,12 +37,14 @@ function cargarReinas() {
 
 function mostrarReinas() {
   reinasList.innerHTML = "";
+  reinasList.className = "reinas-grid"; // Asegura el grid
+
   reinas.forEach((queen) => {
     const div = document.createElement("div");
-    div.className = "queen-card";
+    div.className = "queen-card episodio"; // Estilo adicional para esta sección
     div.innerHTML = `
-      <img src="${queen.image}" alt="${queen.name}" />
-      <div>${queen.name}</div>
+      <img src="${queen.image}" alt="${queen.name}" class="queen-img" />
+      <div class="queen-name">${queen.name}</div>
     `;
     reinasList.appendChild(div);
   });
