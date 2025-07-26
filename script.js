@@ -54,48 +54,27 @@ window.addEventListener("DOMContentLoaded", () => {
     renderList(listC, brackets.C);
   }
 
-  function addToBracket(queenIndex) {
+  function addToSpecificBracket(queenIndex, bracketLetter) {
   const queen = selectedQueens[queenIndex];
 
-  // Evita duplicados
-  if (brackets.A.find(q => q.name === queen.name) ||
-      brackets.B.find(q => q.name === queen.name) ||
-      brackets.C.find(q => q.name === queen.name)) {
+  if (
+    brackets.A.find(q => q.name === queen.name) ||
+    brackets.B.find(q => q.name === queen.name) ||
+    brackets.C.find(q => q.name === queen.name)
+  ) {
     alert(`${queen.name} ya está asignada a un bracket.`);
     return;
   }
 
-  // Crea los botones de selección
-  const modal = document.createElement('div');
-  modal.className = 'bracket-choice-modal';
-  modal.innerHTML = `
-    <div class="bracket-choice-inner">
-      <h3>¿A qué bracket quieres agregar a <strong>${queen.name}</strong>?</h3>
-      <div class="choice-buttons">
-        <button class="bracket-btn ruby" data-bracket="A">Bracket A 💎</button>
-        <button class="bracket-btn emerald" data-bracket="B">Bracket B 💚</button>
-        <button class="bracket-btn sapphire" data-bracket="C">Bracket C 💙</button>
-      </div>
-    </div>
-  `;
+  if (brackets[bracketLetter].length >= 6) {
+    alert(`El bracket ${bracketLetter} ya está completo.`);
+    return;
+  }
 
-  document.body.appendChild(modal);
-
-  // Añadir eventos a los botones
-  modal.querySelectorAll('.bracket-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const chosen = btn.dataset.bracket;
-      if (brackets[chosen].length >= 6) {
-        alert(`El Bracket ${chosen} ya está lleno.`);
-      } else {
-        brackets[chosen].push(queen);
-        renderBrackets();
-      }
-      modal.remove(); // Cierra el modal
-    });
-  });
+  brackets[bracketLetter].push(queen);
+  renderBrackets();
 }
-window.addToBracket = addToBracket;
+window.addToSpecificBracket = addToSpecificBracket;
   
   function removeFromBracket(listId, queenIndex) {
     if (listId === 'listA') brackets.A.splice(queenIndex, 1);
