@@ -64,15 +64,14 @@ window.addEventListener("DOMContentLoaded", () => {
     renderList(listC, brackets.C);
   }
 
-  function addToBracket(name, image, bracket) {
-  const stored = JSON.parse(localStorage.getItem(`bracket${bracket}`)) || [];
-  if (stored.find(q => q.name === name)) {
-    alert(`${name} ya está en el Bracket ${bracket}`);
+  function addToBracket(queen, bracket) {
+  const list = brackets[bracket];
+  if (list.find(q => q.name === queen.name)) {
+    alert(`${queen.name} ya está en el Bracket ${bracket}`);
     return;
   }
-  stored.push({ name, image });
-  localStorage.setItem(`bracket${bracket}`, JSON.stringify(stored));
-  alert(`${name} fue enviada al Bracket ${bracket} 💖`);
+  list.push(queen);
+  renderBrackets();
 }
   
   function removeFromBracket(listId, queenIndex) {
