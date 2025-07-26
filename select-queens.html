@@ -231,16 +231,6 @@
     selectedQueensDiv.appendChild(div);
   });
 }
-    function addToBracket(name, image, bracket) {
-  const stored = JSON.parse(localStorage.getItem(`bracket${bracket}`)) || [];
-  if (stored.find(q => q.name === name)) {
-    alert(`${name} ya está en el Bracket ${bracket}`);
-    return;
-  }
-  stored.push({ name, image });
-  localStorage.setItem(`bracket${bracket}`, JSON.stringify(stored));
-  alert(`${name} fue enviada al Bracket ${bracket} 💖`);
-}
     // Eliminar reina de seleccionadas
     function removeQueen(index) {
       selectedQueens.splice(index, 1);
