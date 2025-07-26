@@ -54,27 +54,16 @@ window.addEventListener("DOMContentLoaded", () => {
     renderList(listC, brackets.C);
   }
 
-  function addToSpecificBracket(queenIndex, bracketLetter) {
-  const queen = selectedQueens[queenIndex];
-
-  if (
-    brackets.A.find(q => q.name === queen.name) ||
-    brackets.B.find(q => q.name === queen.name) ||
-    brackets.C.find(q => q.name === queen.name)
-  ) {
-    alert(`${queen.name} ya está asignada a un bracket.`);
+  function addToBracket(name, image, bracket) {
+  const stored = JSON.parse(localStorage.getItem(`bracket${bracket}`)) || [];
+  if (stored.find(q => q.name === name)) {
+    alert(`${name} ya está en el Bracket ${bracket}`);
     return;
   }
-
-  if (brackets[bracketLetter].length >= 6) {
-    alert(`El bracket ${bracketLetter} ya está completo.`);
-    return;
-  }
-
-  brackets[bracketLetter].push(queen);
-  renderBrackets();
+  stored.push({ name, image });
+  localStorage.setItem(`bracket${bracket}`, JSON.stringify(stored));
+  alert(`${name} fue enviada al Bracket ${bracket} 💖`);
 }
-window.addToSpecificBracket = addToSpecificBracket;
   
   function removeFromBracket(listId, queenIndex) {
     if (listId === 'listA') brackets.A.splice(queenIndex, 1);
