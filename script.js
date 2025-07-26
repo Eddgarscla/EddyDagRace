@@ -26,12 +26,22 @@ window.addEventListener("DOMContentLoaded", () => {
       <img src="${queen.image}" alt="${queen.name}" />
       <span>${queen.name}</span>
       <div class="bracket-buttons">
-        <button class="btn-ruby" onclick="addToBracket(${idx}, 'A')">A</button>
-        <button class="btn-emerald" onclick="addToBracket(${idx}, 'B')">B</button>
-        <button class="btn-sapphire" onclick="addToBracket(${idx}, 'C')">C</button>
+        <button class="btn-ruby" data-idx="${idx}" data-bracket="A">A</button>
+        <button class="btn-emerald" data-idx="${idx}" data-bracket="B">B</button>
+        <button class="btn-sapphire" data-idx="${idx}" data-bracket="C">C</button>
       </div>
     `;
     queenPool.appendChild(div);
+  });
+
+  // Asignar eventos a todos los botones recién creados
+  document.querySelectorAll('.bracket-buttons button').forEach(button => {
+    button.addEventListener('click', e => {
+      const idx = parseInt(e.target.getAttribute('data-idx'));
+      const bracket = e.target.getAttribute('data-bracket');
+      const queen = selectedQueens[idx];
+      addToBracket(queen, bracket);
+    });
   });
 }
 
