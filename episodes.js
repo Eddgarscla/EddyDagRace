@@ -114,8 +114,8 @@ function mostrarTop2() {
   });
 
   top2.forEach(([name]) => {
-    puntajes[name] = (puntajes[name] || 0) + 2;
-  });
+  puntajes[name] += 2;
+});
 
   btnAnterior.disabled = false;
   btnSiguiente.textContent = "Ver ganadora";
