@@ -37,16 +37,25 @@ function cargarReinas() {
 
 function mostrarReinas() {
   reinasList.innerHTML = "";
-  reinasList.className = "reinas-grid"; // Asegura el grid
+  reinasList.className = "reinas-grid";
 
-  reinas.forEach((queen) => {
+  // Filtrar las reinas del bracket actual
+  const reinasFiltradas = reinas.filter(q => q.bracket === bracketActual);
+
+  if (reinasFiltradas.length === 0) {
+    reinasList.innerHTML = "<p style='color: white;'>No hay reinas para este bracket.</p>";
+    return;
+  }
+
+  reinasFiltradas.forEach((queen) => {
     const div = document.createElement("div");
-    div.className = "queen-card episodio"; // Estilo adicional para esta sección
+    div.className = "queen-card episodio";
     div.innerHTML = `
       <img src="${queen.image}" alt="${queen.name}" class="queen-img" />
       <div class="queen-name">${queen.name}</div>
     `;
     reinasList.appendChild(div);
+    infoEpisodio.textContent = `Reinas en Bracket ${bracketActual}: ${reinasFiltradas.length}`;
   });
 }
 
