@@ -63,26 +63,7 @@ function mostrarReto() {
   puntosRepartidos = {};
 }
 
-function mostrarDesempeno() {
-  retoDiv.textContent = "";
-  infoEpisodio.textContent = "Resultados del desempeño:";
-  tablaPuntajes.innerHTML = "";
-  const niveles = ["Malo", "Regular", "Excelente"];
-  reinasList.innerHTML = "";
-  reinas.forEach((queen) => {
-    const nivel = niveles[Math.floor(Math.random() * niveles.length)];
-    const div = document.createElement("div");
-    div.className = "queen-card";
-    div.innerHTML = `
-      <img src="${queen.image}" alt="${queen.name}" />
-      <div>${queen.name}</div>
-      <div><strong>Desempeño:</strong> ${nivel}</div>
-    `;
-    reinasList.appendChild(div);
-    puntajes[queen.name] = nivel === "Excelente" ? 2 : nivel === "Regular" ? 1 : 0;
-  });
-  btnAnterior.disabled = false;
-  btnSiguiente.textContent = "Ver Top 2";
+
 }
 
 function mostrarTop2() {
@@ -104,7 +85,32 @@ function mostrarTop2() {
       <div>${queen.name}</div>
       <div>Puntos: ${puntos}</div>
     `;
+    reinasList.appendChfunction mostrarDesempeno() {
+  retoDiv.textContent = "";
+  infoEpisodio.textContent = "Resultados del desempeño:";
+  tablaPuntajes.innerHTML = "";
+  const niveles = ["Malo", "Regular", "Excelente"];
+  reinasList.innerHTML = "";
+
+  reinas.forEach((queen) => {
+    const nivel = niveles[Math.floor(Math.random() * niveles.length)];
+
+    const div = document.createElement("div");
+    div.className = `queen-card desempeño-${nivel.toLowerCase()}`; // ← cambiamos aquí
+
+    div.innerHTML = `
+      <img src="${queen.image}" alt="${queen.name}" />
+      <div class="queen-name">${queen.name}</div>
+      <div class="desempeno-text">Desempeño: <strong>${nivel}</strong></div>
+    `;
+
     reinasList.appendChild(div);
+    puntajes[queen.name] = nivel === "Excelente" ? 2 : nivel === "Regular" ? 1 : 0;
+  });
+
+  btnAnterior.disabled = false;
+  btnSiguiente.textContent = "Ver Top 2";
+    }ild(div);
   });
 
   top2.forEach(([name]) => {
