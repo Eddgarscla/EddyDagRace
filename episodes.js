@@ -297,6 +297,8 @@ function iniciar() {
   infoEpisodio.textContent = "Estas son las reinas del Bracket A para este episodio:";
   retoDiv.textContent = "";
   tablaPuntajes.innerHTML = "";
+
+  reinasList.className = "reinas-grid"; // 💅 Estilo visual desde el principio
   mostrarReinas();
 
   btnAnterior.disabled = true;
